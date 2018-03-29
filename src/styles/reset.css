@@ -1,0 +1,86 @@
+/*基本变亮，基本设置*/
+html{
+   font-size: 10vw
+}
+html,body { width: 100%; min-height: 100%;background-color: #fff;}
+body,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,p {margin: 0;padding:0;font-weight:normal;font-family:STHeitiSC, Microsoft YaHei;color: #666461 }
+ul,ol { padding: 0;}
+ul li,ol li{list-style: none}
+strong{font-weight: normal;}
+body {
+  //'STHeiti'mac上会优先苹果黑体字所以不能设置这种字体
+  font-size: 0.16rem;
+  -webkit-overflow-scrolling: touch;
+  font-family: "MicrosoftYahei" "STHeitiSC"
+}
+body a {
+    text-decoration: none;
+    color: #666461;
+
+}
+/*将input默认属性更改*/
+input {
+  border-width: 0px;
+  padding: 0px;
+  border-style: none;
+}
+input:focus {
+  outline: -webkit-focus-ring-color auto 0px;
+  outline-offset: none;
+}
+button,
+input,
+textarea {
+  border: none;
+  outline: none;
+}
+textarea {
+  resize: none;
+}
+/*图片的滤镜效果*/
+.filterImg {
+    filter: invert(1);
+    -webkit-filter: invert(1);
+}
+
+
+/*//用到overflow 的地方进行滑动的请加上此属性，解决iOS兼容性*/
+
+.overflowScroll {
+    -webkit-overflow-scrolling: touch;
+}
+
+.hide-layout {
+    display: none;
+}
+
+a,
+p,
+span,
+b {
+    font-weight: 300;
+}
+/* ---------更改inputplaceholder的颜色有点太浅了--------- */
+
+
+input::input-placeholder,textarea::input-placeholder {
+    color:#ccc!important;
+    font-weight: normal
+}
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
+    color:#ccc!important;
+    font-weight: normal
+
+}
+/* ---------更改input区域默认的黄色部分--------- */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #fff !important
+}
+/* ---------版心--------- */
+.container {
+  padding:0 0.4rem;
+  width: 100%;
+  box-sizing: border-box;
+}

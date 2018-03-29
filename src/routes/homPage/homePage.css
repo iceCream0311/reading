@@ -1,0 +1,320 @@
+/****************** 导航 ******************/
+.homePage .nav{
+ padding: .53333rem 0 0.41rem;
+ overflow: hidden;
+}
+.homePage .nav li{
+ float: left;
+ width: 25%
+}
+.homePage .nav li a{
+ font-size: 0.4rem;
+ text-align: center;
+ display: block;
+
+}
+.homePage .nav li a h4{
+ line-height: .63rem;
+}
+.homePage .nav li a img{
+ display: block;
+ width: 46%;
+ margin:0 auto;
+ vertical-align: top;
+}
+/*************** 分类 ***************/
+.category{
+ overflow: hidden;
+}
+.category>div{
+ float: left;
+ width: 47.25%;
+ height:1.9rem;
+ border-radius: 0.08rem;
+ overflow: hidden;
+
+
+}
+.category>div a{
+ font-size: .64rem;
+ font-weight: 700;
+ color: #423c35;
+  padding-left: 6.7%;
+ padding-top:20%;
+ box-sizing: border-box;
+ display: inline-block;
+ width: 100%;height: 100%
+}
+.category>div.left{
+ background: url("../../images/category.png")  50%  50% no-repeat;
+ background-size: cover;
+ margin-right: 5.5%
+}
+.category>div.right{
+ background: url("../../images/category1.png") 50%  50% no-repeat;
+ background-size: cover;
+}
+/****************** 推荐小说 ******************/
+.book-list{
+ overflow: hidden;
+ margin: 0.4rem 0
+}
+.book-list>li{
+ float: left;
+ width: 30%;
+ margin-right: 5%;
+ position: relative;
+}
+.book-list>li:last-child{
+ margin-right: 0;
+}
+.book-list>li>a{
+ width: 100%;
+ display: inline-block;
+ -webkit-tap-highlight-color: #e8e8e8;
+
+}
+.book-list-top{
+ width:100%;
+ height: 3.85rem
+}
+.book-list-top img{
+  vertical-align: top;
+ width: 100%;
+ height: 100%;
+ box-shadow: 0 5px 10px 0 rgba(0,0,0,.08), 0 2px 2px 0 rgba(0,0,0,.08);
+}
+.book-list h3{
+ display: -webkit-box;
+ -webkit-box-orient: vertical;
+ -webkit-line-clamp: 2;
+ text-overflow: ellipsis;
+ line-height: .50667rem;
+ max-height: 1.01333rem;
+ overflow: hidden;
+ margin: .4rem 0 .10667rem;
+ font-size: .37333rem;
+ color: #24211f;
+}
+.book-list .author {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+    overflow: hidden;
+    font-size: .32rem;
+    color: #8a8886;
+}
+.book-list .index {
+    width: .48rem;
+    height: .45333rem;
+    background: url(../../images/index.png) 50% no-repeat;
+    background-size: 100%;
+    position: absolute;
+    left: .13333rem;
+    top: -.05333rem;
+    color: #fff;
+    line-height: .37333rem;
+    text-indent: -.05333rem;
+    text-align: center;
+    font-size: .24rem;
+    font-weight: 600
+}
+
+.changebtn {
+  display: block;
+  border-top: 1px solid #ededed;
+  height: 1.14667rem;
+  line-height: 1.14667rem;
+  font-size: .34667rem;
+  color: #666461;
+  text-align: center;
+
+}
+.changebtn img{
+ width: .26667rem;
+ vertical-align: middle;
+ margin-left: .10667rem
+}
+/* 排行榜 */
+.cardTitle{
+ line-height: .8rem;
+ padding: .26667rem .4rem 0;
+ background: #f5f5f5;
+}
+.cardTitle .title{
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ line-height: .8rem;
+ overflow: hidden;
+ width: 7.7rem;
+ font-size: .48rem;
+ color: #666461;
+ display: inline-block;
+}
+.cardTitle .title .sep {
+ background: #666461;
+ border-radius: 3px;
+ width: .06667rem;
+ height: .32rem;
+ margin-right: .16rem;
+ display: inline-block;
+}
+.cardTitle .more {
+ font-size: .34667rem;
+ color: #8a8886;
+ display: inline-block;
+ height: 0.8rem;
+ line-height: 0.8rem;
+ vertical-align: top;
+}
+.arrow{
+ display: inline-block;
+ width: .13333rem;
+ height: .24rem;
+ margin-left: .13333rem;
+ background: url(../../images/arrow.png) 0 0 no-repeat;
+ background-size: 100% auto;
+}
+.ranking-tabs{
+ overflow: hidden;
+ border-bottom: 1px solid #ededed;
+ background-color: #fff;
+ height: .90667rem;
+}
+
+.ranking-tabs li {
+ float: left;
+ position: relative;
+ display: inline-block;
+ width: 33.33%;
+ height: 100%;
+ line-height: .90667rem;
+ font-size: .4rem;
+ color: #aba59a;
+ text-align: center;
+}
+.ranking-tabs li.active{
+ color: #ed6460;
+}
+.ranking-tabs li.active:after{
+ content: "";
+ position: absolute;
+ width: .34667rem;
+ height: .06667rem;
+ border-radius: .06667rem;
+ background-color: #ed6460;
+ left: 50%;
+ bottom: -1px;
+ margin-left: -.17333rem;
+}
+/* 后6名 */
+.book-list-bottom li{
+  height: .48rem;
+  line-height: .48rem;
+  margin-bottom: .77333rem
+}
+.book-list-bottom {
+ font-size: 0.32rem
+}
+.book-list-bottom span{
+ display: inline-block;
+}
+.book-list-bottom .index {
+ display: inline-block;
+ width: 1rem;
+ font-size: .48rem;
+ color: #8a8886;
+ vertical-align: middle;
+}
+.book-list-bottom .tag {
+ display: inline-block;
+ margin-right: .13333rem;
+ padding: 0 .05333rem;
+ line-height: .45333rem;
+ color: #8a8886;
+ border: 1px solid #979797;
+ border-radius: .05333rem;
+ vertical-align: bottom;
+}
+.book-list-bottom .title {
+     line-height: 1.5;
+    display: inline-block;
+    width: 4.6rem;
+    font-size: .42667rem;
+    line-height: .48rem;
+    color: #24211f;
+    vertical-align: middle;
+}
+.book-list-bottom .author,
+.book-list-bottom .title {
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
+.book-list-bottom .author {
+ line-height: 1.5;
+ width: 1.6rem;
+ font-size: .32rem;
+ color: #666461;
+ text-align: right;
+}
+.btn-more{
+ display: inline-block;
+ width: 6.66667rem;
+ height: .93333rem;
+ line-height: .93333rem;
+ border-radius: 6px;
+ font-size: .42667rem;
+ text-align: center;
+ box-sizing: border-box;
+ display: block;
+ margin: 0 auto .77333rem;
+ border: 1px solid #666461;
+ color: #666461;
+}
+.copyright{
+ background: #f5f5f5;
+ padding: .33333rem 0;
+ font-size: .29333rem;
+ color: #8a8886;
+ text-align: center;
+ margin-bottom: 2.13333rem;
+}
+
+.lastReadTip {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: .33333rem;
+    height: .53333rem;
+    line-height: 0.1rem;
+    background: #fff;
+    border-top: 1px solid #ededed;
+}
+.lastReadTip a{
+ font-size: 0.32rem;
+ display: inline-block;
+ line-height: 0.53333rem;
+}
+.icon-bookmarket {
+    width: .53333rem;
+    height: .53333rem;
+    background: url(../../images/reading.png) 50% no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+ .lastReadTip p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: .53333rem;
+    overflow: hidden;
+    height: .53333rem;
+    display: inline-block;
+    margin-left: .06667rem;
+    width: 8.4rem;
+    font-size: .36rem;
+    color: #666461;
+    vertical-align: middle;
+}
