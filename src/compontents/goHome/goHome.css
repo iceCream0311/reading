@@ -1,0 +1,17 @@
+.go-home{
+ height: 1.09333rem;
+ line-height: 1.09333rem;
+ padding: 0 .4rem;
+ text-align: center;
+ border-bottom: 1px solid #ededed;
+ background-color: #fff;
+ text-align: right
+}
+.go-home a{
+ display: inline-block;
+ line-height: 1.09333rem;
+ height: 100%;
+ font-size: .37333rem;
+ vertical-align: top;
+ color: #60aaed;
+}

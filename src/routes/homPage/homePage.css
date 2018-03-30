@@ -169,11 +169,12 @@
 }
 .arrow{
  display: inline-block;
- width: .13333rem;
- height: .24rem;
+  width: .32rem;
+  height: .32rem;
  margin-left: .13333rem;
  background: url(../../images/arrow.png) 0 0 no-repeat;
  background-size: 100% auto;
+ vertical-align: middle;
 }
 .ranking-tabs{
  overflow: hidden;
@@ -282,15 +283,15 @@
 }
 
 .lastReadTip {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: .33333rem;
-    height: .53333rem;
-    line-height: 0.1rem;
-    background: #fff;
-    border-top: 1px solid #ededed;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: .33333rem;
+  height: .53333rem;
+  line-height: 0.1rem;
+  background: #fff;
+  border-top: 1px solid #ededed;
 }
 .lastReadTip a{
  font-size: 0.32rem;
@@ -298,23 +299,23 @@
  line-height: 0.53333rem;
 }
 .icon-bookmarket {
-    width: .53333rem;
-    height: .53333rem;
-    background: url(../../images/reading.png) 50% no-repeat;
-    background-size: 100%;
-    display: inline-block;
-    vertical-align: middle;
+  width: .53333rem;
+  height: .53333rem;
+  background: url(../../images/reading.png) 50% no-repeat;
+  background-size: 100%;
+  display: inline-block;
+  vertical-align: middle;
 }
  .lastReadTip p {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    line-height: .53333rem;
-    overflow: hidden;
-    height: .53333rem;
-    display: inline-block;
-    margin-left: .06667rem;
-    width: 8.4rem;
-    font-size: .36rem;
-    color: #666461;
-    vertical-align: middle;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: .53333rem;
+  overflow: hidden;
+  height: .53333rem;
+  display: inline-block;
+  margin-left: .06667rem;
+  width: 8.2rem;
+  font-size: .36rem;
+  color: #666461;
+  vertical-align: middle;
 }
