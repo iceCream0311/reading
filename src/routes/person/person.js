@@ -8,8 +8,8 @@ export default class Person extends Component{
   return(
   <div className="pesron">
     <GoHome />
-    <div class="profile container">
-       <div className="img"><img src={head} /></div>
+    <div className="profile container">
+       <div className="img"><img src={head} alt="me" /></div>
      <div className="detail">
        <h2><span>读书人</span></h2>
        <p>您的账号ID:np_JyhiKMRA2Q</p>
@@ -27,7 +27,7 @@ export default class Person extends Component{
           <div className="left"><i></i>&nbsp;&nbsp;我的红包</div><div className="right"><span class="arrow"></span></div>
          </Link>
       </li>
-      <li class="history">
+      <li className="history">
         <Link to="/history">
         <div className="left"><i></i>&nbsp;&nbsp;阅读历史</div><div className="right"><span class="arrow"></span></div>
         </Link>

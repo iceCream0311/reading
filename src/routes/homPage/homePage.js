@@ -35,10 +35,10 @@ export default class HomePage extends Component {
    <div className="homePage">
     <div className="container">
      <ul className="nav">
-      <li> <Link to="/search"><img src={search} /><h4>搜索</h4></Link></li>
-      <li> <Link to="/person"><img src={person} /><h4>个人中心</h4></Link></li>
-      <li> <Link to="/pay"><img src={coin} /><h4>充值</h4></Link></li>
-      <li> <Link to="/history"><img src={book} /><h4>阅读历史</h4></Link></li>
+      <li> <Link to="/search"><img src={search}  alt="搜索"/><h4>搜索</h4></Link></li>
+      <li> <Link to="/person"><img src={person} alt="个人中心" /><h4>个人中心</h4></Link></li>
+      <li> <Link to="/pay"><img src={coin} alt="充值" /><h4>充值</h4></Link></li>
+      <li> <Link to="/history"><img src={book} alt="阅读历史" /><h4>阅读历史</h4></Link></li>
      </ul>
      <div className="category">
        <div className="left"><Link to="/">分类</Link></div>
@@ -51,7 +51,7 @@ export default class HomePage extends Component {
         <li key={index}>
          <Link to={item.url}>
           <div className="book-list-top">
-           <img src={item.img} />
+           <img src={item.img} alt={item.title} />
            <h3>{item.title}</h3>
            <p className="author">{item.author}</p>
           </div>
@@ -61,7 +61,7 @@ export default class HomePage extends Component {
       })
      }
      </ul>
-     <div className="changebtn">换一换<img src={changebtn}/></div>
+     <div className="changebtn">换一换<img src={changebtn} alt="换一换"/></div>
     </div>
     <div className="cardTitle">
       <div className="title"><b className="sep"></b>排行</div>
@@ -81,7 +81,7 @@ export default class HomePage extends Component {
             <b className="index">{index+1}</b>
             <Link to={item.url}>
              <div className="book-list-top">
-              <img src={item.img} />
+              <img src={item.img} alt={item.title}/>
               <h3>{item.title}</h3>
               <p className="author">{item.author}</p>
              </div>

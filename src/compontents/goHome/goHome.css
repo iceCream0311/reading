@@ -15,3 +15,22 @@
  vertical-align: top;
  color: #60aaed;
 }
+.go-home .empty{
+  font-size: .37333rem;
+  color: #8a8886;
+  display: inline-block;
+  height: 100%;
+  padding-right:0.26667rem;
+  vertical-align: middle;
+}
+.margin-dom{
+ margin-right:0.26667rem;
+ width: 0;
+ border-right:1px solid  #8a8886;
+ height: .24rem;
+ display: inline-block;
+ vertical-align: middle;
+}
+#history .go-home a{
+ vertical-align: middle;
+}

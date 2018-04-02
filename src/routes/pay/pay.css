@@ -1,0 +1,163 @@
+em{
+ font-style: normal;
+}
+.account{
+ padding: 0 .4rem .4rem;
+ background: #ed6460;
+ color: #fff;
+}
+.account p,.account em,.account a{
+ color: #fff;
+}
+.account p{
+ padding-top: .6rem;
+ font-size: .37333rem;
+}
+.account p em{
+ font-size: .93333rem;
+ font-weight: 700;
+ margin: 0 .16rem;
+ font-style: normal;
+}
+.account p em.yd {
+ margin-left: 0;
+}
+.account p em.yd-s {
+ margin: 0 .08rem 0 .34667rem;
+ font-size: .53333rem;
+}
+.account a {
+ display: block;
+ margin-top: .39333rem;
+ height: .34667rem;
+ font-size: .34667rem;
+ line-height: 1;
+ color: #fff;
+
+}
+.account a .icon-arrow {
+ width: .32rem;
+ height: .32rem;
+ background: url(../../images/aarrow_white.png) 50% no-repeat;
+ background-size: 100%;
+ display: inline-block;
+ margin-left: .10667rem;
+ vertical-align: bottom;
+}
+.tip{
+ padding: .32rem .4rem;
+ background: #f5f5f5;
+ font-size: .37333rem;
+ color: #8a8886;
+ text-align: justify;
+ line-height: 1.5;
+ margin-bottom: .4rem;
+}
+.tip .icon-info {
+ width: .37333rem;
+ height: .37333rem;
+ background: url(../../images/warn.png) 50% no-repeat;
+ background-size: 100%;
+ display: inline-block;
+ margin-right: .2rem;
+}
+/* 充值列表 */
+.recharge-list {
+ padding: .53333rem .4rem .01333rem;
+ margin-bottom: 10px;
+}
+.recharge-list h4 {
+ margin-bottom: .4rem;
+ font-size: .42667rem;
+ line-height: .74667rem;
+ color: #666461;
+}
+.recharge-list h4 em {
+ margin-left: .26667rem;
+ color: #ed6460;
+}
+.recharge-list ul{
+ overflow: hidden;
+}
+.recharge-list ul li{
+ float: left;
+  position: relative;
+ width: 47.8%;
+ height: 2.4rem;
+ margin-bottom: .53333rem;
+ text-align: center;
+ border: 1px solid #ededed;
+ border-radius: .13333rem;
+}
+.recharge-list ul li:nth-child(2n){
+ float: right;
+}
+.recharge-list ul li .money {
+ font-size: .58667rem;
+ margin-top: .4rem;
+ margin-bottom: .08rem;
+ line-height: .53333rem;
+ letter-spacing: .01333rem;
+ color: #24211f;
+}
+.recharge-list ul li p {
+ padding: 0 .21333rem;
+ font-size: .37333rem;
+ line-height: .64rem;
+ color: #666461;
+}
+.recharge-list ul li em {
+ font-weight: 700;
+ color: #ed6460;
+}
+.recharge-list ul li p.hot{
+ color:#ed6460;
+}
+.recharge-list ul li.hot-first:after,
+.recharge-list ul li.hot-li:after{
+ content: "";
+ position: absolute;
+ top: -.09333rem;
+ right: -.06667rem;
+ height: .53333rem;
+ width: 1.06666rem;
+ background: url(../../images/active.png) center no-repeat;
+ background-size: contain;
+}
+.recharge-list ul li.hot-li:after{
+ background-image: url(../../images/active1.png);
+}
+/* 余额不足提醒 */
+.optional {
+ padding: .10667rem 0 1.84rem;
+ font-size: .37333rem;
+ text-align: center;
+}
+.optional p {
+  margin-bottom: .29333rem;
+  color: #666461;
+
+ }
+.optional .go-pay{
+  color: #ed6460;
+}
+.optional .go-pay .icon-arrow {
+ display: inline-block;
+ transform: rotate(45deg);
+ -webkit-transform: rotate(45deg);
+ -moz-transform: rotate(45deg);
+ -o-transform: rotate(45deg);
+ -ms-transform: rotate(45deg);
+ border: 1px solid #ed6460;
+ border-left-color: transparent;
+ border-bottom-color: transparent;
+ width: .16rem;
+ height: .16rem;
+ margin: 0;
+}
+.recharge-list ul li.selected{
+    background-color: #ed6460;
+}
+.recharge-list ul li.selected p,.recharge-list ul li.selected p em{
+ color: #fff
+}

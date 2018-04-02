@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
-import logo from './logo.svg';
 import HomePage from './routes/homPage/homePage.js';
 import CategoryPage from './routes/categoryPage/categoryPage.js';
 import Person from './routes/person/person.js';

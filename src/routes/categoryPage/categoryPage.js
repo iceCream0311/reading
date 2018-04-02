@@ -22,7 +22,7 @@ export default class CategoryPage extends Component{
             <b className="index">{index+1}</b>
             <Link to={item.sourceUuid}>
              <div className="book-list-top">
-              <img src={item.cover} />
+              <img src={item.cover} alt={item.title} />
               <h3>{item.title}</h3>
               <p className="author">{item.author}</p>
              </div>
