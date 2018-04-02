@@ -19,17 +19,17 @@ export default class Person extends Component{
       <li className="recharge">
         <Link to="/pay" >
           <div className="left"><i></i>&nbsp;&nbsp;充值</div>
-          <div className="right"><span>余额 0阅点+200红包</span><span class="arrow"></span></div>
+          <div className="right"><span>余额 0阅点+200红包</span><span className="arrow"></span></div>
         </Link>
       </li>
       <li className="hongbao">
          <Link to="/hongbao">
-          <div className="left"><i></i>&nbsp;&nbsp;我的红包</div><div className="right"><span class="arrow"></span></div>
+          <div className="left"><i></i>&nbsp;&nbsp;我的红包</div><div className="right"><span className="arrow"></span></div>
          </Link>
       </li>
       <li className="history">
         <Link to="/history">
-        <div className="left"><i></i>&nbsp;&nbsp;阅读历史</div><div className="right"><span class="arrow"></span></div>
+        <div className="left"><i></i>&nbsp;&nbsp;阅读历史</div><div className="right"><span className="arrow"></span></div>
         </Link>
       </li>
      </ul>

@@ -13,10 +13,12 @@ import man2 from '../../images/man2.jpg';
 import man3 from '../../images/man3.jpg';
 import changebtn from '../../images/change.png';
 import homeData from './data.js';
+import {changeActiveColor} from '../../utils/commit.js';
 export default class HomePage extends Component {
  constructor(props){
    super(props);
    this.state={
+    category:"man",
     tjArr:[
      {url:"/",img:tj1,title:"总裁欺上身，娇妻晚上见",author:"琪安"},
      {url:"/",img:tj2,title:"最强兵痞",author:"二斗"},
@@ -29,8 +31,16 @@ export default class HomePage extends Component {
      ]
     }
  }
- render()
- {
+ changeColor=(e)=>{
+    var dom=e.currentTarget;
+    changeActiveColor(dom)
+    this.setState({
+      category:dom.getAttribute("data-category")
+    },function(){
+      console.log(this.state.category)
+    })
+  }
+ render(){
   return(
    <div className="homePage">
     <div className="container">
@@ -41,8 +51,8 @@ export default class HomePage extends Component {
       <li> <Link to="/history"><img src={book} alt="阅读历史" /><h4>阅读历史</h4></Link></li>
      </ul>
      <div className="category">
-       <div className="left"><Link to="/">分类</Link></div>
-       <div className="right"><Link to="/">排行</Link></div>
+       <div className="left"><Link to="/category">分类</Link></div>
+       <div className="right"><Link to="/category">排行</Link></div>
      </div>
      <ul className="book-list">
      {
@@ -65,12 +75,12 @@ export default class HomePage extends Component {
     </div>
     <div className="cardTitle">
       <div className="title"><b className="sep"></b>排行</div>
-      <Link to="more" className="more">更多<em className="arrow"></em></Link>
+      <Link to="category" className="more">更多<em className="arrow"></em></Link>
     </div>
     <ul className="ranking-tabs">
-      <li>女生</li>
-      <li className="active">男生</li>
-      <li>出版</li>
+      <li onClick={this.changeColor} data-category="woman">女生</li>
+      <li onClick={this.changeColor} data-category="man" className="active">男生</li>
+      <li  onClick={this.changeColor} data-category="ca">出版</li>
     </ul>
     <div className="container">
        <ul className="book-list">
