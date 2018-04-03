@@ -5,6 +5,7 @@ export default class Search extends Component {
  constructor(props){
   super(props)
   this.state={
+    values:"",
    lsArr:[],
    data:{
     "hots":[
@@ -15,14 +16,14 @@ export default class Search extends Component {
   }
  }
  componentDidMount(){
- this.search("")
+ this.historyList("")
  }
  searche=(e)=>{
   if (e.which !== 13) return
   let str= e.currentTarget.value;
-  this.search(str)
+  this.historyList(str)
  }
- search=(str)=>{
+ historyList=(str)=>{
   let newLs="";
   let ls=localStorage.getItem("search_Keys");
   let flag=false;
@@ -44,7 +45,7 @@ export default class Search extends Component {
        lsArr:lsArr.push("str")
      })
     }else{
-     newLs=ls
+     newLs=ls;
     }
    }
    else if (ls!==str) {
@@ -76,10 +77,18 @@ clearFn=()=>{
      lsArr:[]
     })
 }
-keypress(e) {
-      if (e.which !== 13) return
-      console.log('你按了回车键...')
-    }
+/*点击更改input值*/
+searchInpt=(e)=>{
+  this.setState({value:e.target.innerHTML});
+  document.getElementById("search-input").value=e.target.innerHTML;
+  this.historyList(e.target.innerHTML)
+}
+/*点击更改input值*/
+changeText=(e)=>{
+  this.setState({value:e.target.values});
+  this.historyList(e.target.values)
+  /*搜索*/
+};
  render(){
   return(
    <div id="search">
@@ -87,7 +96,7 @@ keypress(e) {
     <div className="search-input">
      <div className="inner">
       <b className="icon icon-search"></b>
-      <input type="text" id="search-input" name="key"  placeholder={this.state.data.hint} onKeyPress={this.searche}/>
+      <input type="text" id="search-input" name="key"  onBlur={this.changeText} placeholder={this.state.data.hint} onKeyPress={this.searche}/>
       <b className="icon icon-delete" onClick={this.emptyFn}></b>
      </div>
     </div>
@@ -96,7 +105,7 @@ keypress(e) {
       <dt>热搜</dt>
       <dd className="lines-3">
        {this.state.data.hots.map((item,index)=>{
-        return <span key={index}>{item}</span>
+        return <span key={index} onClick={this.searchInpt}>{item}</span>
        })
         }
       </dd>
@@ -106,7 +115,7 @@ keypress(e) {
       <dd className="lines-2">
        {this.state.lsArr.length?
         this.state.lsArr.map((item,index)=>{
-        return <span key={index}>{item}</span>
+        return <span key={index} onClick={this.searchInpt}>{item}</span>
         }):""
         }
       </dd>

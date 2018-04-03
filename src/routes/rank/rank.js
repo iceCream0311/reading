@@ -4,7 +4,7 @@ import  {Link}from 'react-router-dom';
 import GoHome from '../../compontents/goHome/goHome';
 import {changeActiveColor} from '../../utils/commit.js';
 
-export default class CategoryPage extends Component{
+export default class Rank extends Component{
    changeColor=(e)=>{
     var dom=e.currentTarget;
     changeActiveColor(dom)

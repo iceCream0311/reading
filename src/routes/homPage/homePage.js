@@ -51,7 +51,7 @@ export default class HomePage extends Component {
       <li> <Link to="/history"><img src={book} alt="阅读历史" /><h4>阅读历史</h4></Link></li>
      </ul>
      <div className="category">
-       <div className="left"><Link to="/category">分类</Link></div>
+       <div className="left"><Link to="/rank">分类</Link></div>
        <div className="right"><Link to="/category">排行</Link></div>
      </div>
      <ul className="book-list">
