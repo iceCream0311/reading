@@ -13,6 +13,7 @@ export default class Rank extends Component{
   serial:"全部",
   wordCount:"全部",
   category:"全部",
+  categorys:"",
    show:true
   }
  }
@@ -20,9 +21,9 @@ export default class Rank extends Component{
    let dom=e.currentTarget;
    changeActiveColor(dom)
    this.setState({
-     category:dom.getAttribute("data-category")
+     categorys:dom.getAttribute("data-category")
    },function(){
-     console.log(this.state.category)
+     console.log(this.state.categorys)
    })
  }
  toggoleFn=(e)=>{
@@ -34,7 +35,7 @@ export default class Rank extends Component{
  }
  render(){
   return (
-   <div>
+   <div id="rank">
    <GoHome />
     <ul className="ranking-tabs">
       <li onClick={this.changeColor}>女生</li>
@@ -73,40 +74,28 @@ export default class Rank extends Component{
      }
     </div>
     <div className="container">
-       <ul className="book-list">
+       <ul className="book-category">
         {
-          homeData.slice(0,3).map((item,index)=>{
+          homeData.map((item,index)=>{
           return(
            <li key={index}>
-            <b className="index">{index+1}</b>
-            <Link to={item.sourceUuid}>
-             <div className="book-list-top">
-              <img src={item.cover} alt={item.title} />
-              <h3>{item.title}</h3>
-              <p className="author">{item.author}</p>
-             </div>
+            <Link className="link" to={item.sourceUuid}>
+              <div className="bookCover">
+                <img src={item.cover} alt={item.title} />
+              </div>
+               <div className="bookDesc">
+               <h3>{item.title}</h3>
+                <div className="detail">
+                  <span className="author">{item.author}</span>/<span className="readCount">{item.totalCount}</span>
+                </div>
+                <p className="desc">{item.description}</p>
+               </div>
             </Link>
            </li>
            )
          })
         }
         </ul>
-        <ul className="book-list-bottom">
-        {
-         homeData.slice(3,20).map((item,index)=>{
-          return(
-           <li key={index}>
-            <Link  to="">
-              <span className="index">{index+4}.</span>
-              <span className="tag">{item.category}</span>
-              <span className="title">{item.title}</span>
-              <span className="author f-fr">{item.author}</span>
-            </Link>
-           </li>
-           )
-         })
-        }
-       </ul>
      </div>
     </div>
    )

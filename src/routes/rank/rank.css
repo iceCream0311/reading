@@ -1,11 +1,29 @@
-.fold-panel{
+#rank{padding-top: 3rem}
+#rank .go-home{
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  z-index: 100
+}
+#rank  .ranking-tabs{
+  position: fixed;
+  top: 1.06rem;
+  background-color: #fff;
+  width:100%;
+  z-index: 101
+}
+#rank  .fold-panel{
  font-size: .37333rem;
  text-align: center;
  height: .96rem;
  line-height: 0.96rem;
- position: relative;
+ position: fixed;
  background-color: #fff;
  border-bottom: 1px solid #ededed;
+ left: 0;
+ width: 100%;
+ top: 1.96rem;
+ z-index: 100
 }
 .fold-panel .icon-unfold {
   position: absolute;
@@ -33,7 +51,7 @@
   left: 0;
   background: rgba(0,0,0,.4);
   z-index: 1000;
-  top: 2.2rem;
+  top: 2rem;
 
 }
 .mask-box ul{
@@ -68,4 +86,68 @@
   left: 0;
   top: 0rem;
   color: #c3c3c3;
+}
+#rank .book-category li{
+  margin: .53333rem 0;
+}
+#rank .book-category .link{
+  display: block;
+  overflow: hidden;
+}
+#rank .link>div {
+  float: left;
+}
+#rank .bookCover {
+  width: 2rem;
+  height: 2.8rem;
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,.09), 0 2px 2px 0 rgba(0,0,0,.03);
+}
+#rank .bookCover img{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+#rank .bookDesc {
+  width: 6.8rem;
+  font-size: 0.32rem;
+  padding-left:0.4rem
+}
+#rank .bookDesc h3 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+  overflow: hidden;
+  width: 5.93333rem;
+  margin-bottom: .13333rem;
+  font-size: .45333rem;
+  color: #24211f;
+}
+#rank .bookDesc .detail .author {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+  overflow: hidden;
+  max-width: 3.78667rem;
+}
+#rank .bookDesc .detail span {
+  display: inline-block;
+  color: #8a8886;
+  vertical-align: middle;
+}
+#rank .bookDesc .desc {
+  margin-top:0.35rem;
+  display: -webkit-box;
+ /*! autoprefixer: off */
+-webkit-box-orient: vertical;
+/* autoprefixer: on */
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  line-height: .50667rem;
+  max-height: 1.01333rem;
+  overflow: hidden;
+  font-size: .37333rem;
+  color: #8a8886;
+}
+#rank .bookDesc {
+  padding-bottom: 0.16rem
 }

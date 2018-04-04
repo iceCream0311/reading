@@ -3,7 +3,14 @@ import {Link} from 'react-router-dom';
 import GoHome from '../../compontents/goHome/goHome.js';
 import './person.css'
 import head  from '../../images/person-default.png';
+import {GetQueryString} from '../../utils/commit.js';
 export default class Person extends Component{
+  componentDidMount(){
+    if (GetQueryString("openid")) {
+      alert("openid="+GetQueryString("openid"))
+    }
+
+  }
  render (){
   return(
   <div className="pesron">

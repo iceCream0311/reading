@@ -13,12 +13,14 @@ import man2 from '../../images/man2.jpg';
 import man3 from '../../images/man3.jpg';
 import changebtn from '../../images/change.png';
 import homeData from './data.js';
-import {changeActiveColor} from '../../utils/commit.js';
+import {changeActiveColor,GetQueryString} from '../../utils/commit.js';
 export default class HomePage extends Component {
+
  constructor(props){
    super(props);
    this.state={
     category:"man",
+    openid:null,
     tjArr:[
      {url:"/",img:tj1,title:"总裁欺上身，娇妻晚上见",author:"琪安"},
      {url:"/",img:tj2,title:"最强兵痞",author:"二斗"},
@@ -31,6 +33,20 @@ export default class HomePage extends Component {
      ]
     }
  }
+ componentWillMount(){
+  let openid=GetQueryString("openid");
+  if(!openid){
+    window.location.replace('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57cfabeea947cb40&redirect_uri=http%3a%2f%2fwx.devtop.top%2fwx&response_type=code&scope=snsapi_userinfo&#wechat_redirect' )
+  }else{
+    this.setState({
+      openid:openid
+    })
+  }
+ }
+ componentDidMount(){
+    /*let id=this.props.match.params.id*/
+ }
+
  changeColor=(e)=>{
     var dom=e.currentTarget;
     changeActiveColor(dom)
@@ -45,14 +61,14 @@ export default class HomePage extends Component {
    <div className="homePage">
     <div className="container">
      <ul className="nav">
-      <li> <Link to="/search"><img src={search}  alt="搜索"/><h4>搜索</h4></Link></li>
-      <li> <Link to="/person"><img src={person} alt="个人中心" /><h4>个人中心</h4></Link></li>
-      <li> <Link to="/pay"><img src={coin} alt="充值" /><h4>充值</h4></Link></li>
-      <li> <Link to="/history"><img src={book} alt="阅读历史" /><h4>阅读历史</h4></Link></li>
+      <li> <Link to={this.state.openid?`/search?openid=${this.state.openid}`:"/search"}><img src={search}  alt="搜索"/><h4>搜索</h4></Link></li>
+      <li> <Link to={this.state.openid?`/person?openid=${this.state.openid}`:"/person"}><img src={person} alt="个人中心" /><h4>个人中心</h4></Link></li>
+      <li> <Link to={this.state.openid?`/pay?openid=${this.state.openid}`:"/pay"}><img src={coin} alt="充值" /><h4>充值</h4></Link></li>
+      <li> <Link to={this.state.openid?`/history?openid=${this.state.openid}`:"/history"}><img src={book} alt="阅读历史" /><h4>阅读历史</h4></Link></li>
      </ul>
      <div className="category">
-       <div className="left"><Link to="/rank">分类</Link></div>
-       <div className="right"><Link to="/category">排行</Link></div>
+       <div className="left"><Link to={this.state.openid?`/rank?openid=${this.state.openid}`:"/rank"}>分类</Link></div>
+       <div className="right"><Link to={this.state.openid?`/category?openid=${this.state.openid}`:"/category"}>排行</Link></div>
      </div>
      <ul className="book-list">
      {
@@ -75,7 +91,7 @@ export default class HomePage extends Component {
     </div>
     <div className="cardTitle">
       <div className="title"><b className="sep"></b>排行</div>
-      <Link to="category" className="more">更多<em className="arrow"></em></Link>
+      <Link to={this.state.openid?`/category?openid=${this.state.openid}`:"/category"} className="more">更多<em className="arrow"></em></Link>
     </div>
     <ul className="ranking-tabs">
       <li onClick={this.changeColor} data-category="woman">女生</li>
@@ -117,14 +133,14 @@ export default class HomePage extends Component {
          })
         }
        </ul>
-       <Link className="btn-more" to="category">更多</Link>
+       <Link className="btn-more" to={this.state.openid?`/category?openid=${this.state.openid}`:"/category"}>更多</Link>
      </div>
      <div className="copyright">
        <p>杭州酷炫书城信息技术有限公司版权所有©2017-2018</p>
        <p>浙ICP备17039369号</p>
      </div>
      <div className="lastReadTip">
-      <Link to="/">
+      <Link to={this.state.openid?`/?openid=${this.state.openid}`:"/"}>
        <b className="icon icon-bookmarket"></b>
        <p className="desc">上次看到《兵王都市传奇》，点击继续</p>
        <b className="arrow"></b>
