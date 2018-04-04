@@ -23,15 +23,17 @@ export default class Person extends Component{
        this.setState({
           openid:openid
         })
-       axios.get(`http://wx.devtop.top/user/info?openid=${openid}`)
+       axios.get("http://wx.devtop.top/user/info",{
+        params:{
+          openid:openid
+        }
+       })
         .then((res)=>{
-          console.log(res.data)
-
            this.setState({
-                head:res.data.head_imgUrl,
-                id:res.data.id_out,
-                user_name:res.data.user_name,
-                score:res.data.score
+                head:res.data.body.head_imgUrl,
+                id:res.data.body.id_out,
+                user_name:res.data.body.user_name,
+                score:res.data.body.score
             })
         })
         .catch((error)=>{

@@ -36,7 +36,7 @@ export default class HomePage extends Component {
  componentWillMount(){
   let openid=GetQueryString("openid");
   if(!openid){
-    //window.location.replace('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57cfabeea947cb40&redirect_uri=http%3a%2f%2fwx.devtop.top%2fwx&response_type=code&scope=snsapi_userinfo&#wechat_redirect' )
+    window.location.replace('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57cfabeea947cb40&redirect_uri=http%3a%2f%2fwx.devtop.top%2fwx&response_type=code&scope=snsapi_userinfo&#wechat_redirect' )
   }else{
     this.setState({
       openid:openid
