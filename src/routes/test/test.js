@@ -9,7 +9,7 @@ export default class Test extends Component {
  }
  getFn=()=>{
  window.location.replace(
-'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57cfabeea947cb40&redirect_uri=http%3a%2f%2fwx.devtop.top&response_type=code&scope=snsapi_userinfo&#wechat_redirect' )
+'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57cfabeea947cb40&redirect_uri=http%3a%2f%2fwx.devtop.top%2fwx&response_type=code&scope=snsapi_userinfo&#wechat_redirect' )
  }
  render(){
   return(

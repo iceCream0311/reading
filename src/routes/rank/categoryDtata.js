@@ -1,0 +1,34 @@
+const categorys=
+{"params":[
+{"type":"serial","list":[
+{"value":0,"desc":"全部"},
+{"value":1,"desc":"连载中"},
+{"value":2,"desc":"已完结"}],
+"desc":"连载"},
+{"type":"wordCount",
+"list":[
+ {"value":0,"desc":"全部"},
+ {"value":1,"desc":"30w以下"},
+ {"value":2,"desc":"30w-50w"},
+ {"value":3,"desc":"50w-100w"},
+ {"value":4,"desc":"100w以上"}],
+ "desc":"字数"},
+{"type":"category",
+"list":[
+{"value":0,"desc":"全部"},
+{"value":7,"desc":"都市生活"},
+{"value":4,"desc":"官场职场"},
+{"value":1,"desc":"玄幻仙侠"},
+{"value":5,"desc":"悬疑探险"},
+{"value":6,"desc":"灵异恐怖"},
+{"value":11,"desc":"历史传奇"},
+{"value":3,"desc":"军事谍战"},
+{"value":2,"desc":"科幻奇幻"},
+{"value":10,"desc":"同人网游"},
+{"value":12,"desc":"短篇小说"},
+{"value":20000,"desc":"终结者2游戏同人"}],
+"desc":"类型"}
+]}
+export{
+ categorys
+}

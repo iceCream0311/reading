@@ -1,0 +1,71 @@
+.fold-panel{
+ font-size: .37333rem;
+ text-align: center;
+ height: .96rem;
+ line-height: 0.96rem;
+ position: relative;
+ background-color: #fff;
+ border-bottom: 1px solid #ededed;
+}
+.fold-panel .icon-unfold {
+  position: absolute;
+  top: .29333rem;
+  right: .56rem;
+  width: .30667rem;
+  height: .30667rem;
+  background: url(../../images/arrow1.png) 50% no-repeat;
+  background-size: 100%;
+  cursor: pointer;
+  z-index: 10010;
+  -webkit-transition: all .5s;
+     -moz-transition: all .5s;
+      -ms-transition: all .5s;
+       -o-transition: all .5s;
+          transition: all .5s;
+}
+.fold-panel .icon-unfold.show{
+  transform: rotate(-180deg);
+}
+.mask-box {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 1000;
+  top: 2.2rem;
+
+}
+.mask-box ul{
+ background-color: #fff;
+ text-align: left;
+ padding: 0 0.4rem
+}
+.mask-box ul li{
+ overflow: hidden;
+ line-height: .96rem;
+ position: relative;
+ border-bottom: 1px solid #ededed;
+}
+.mask-box ul li>div{
+ float: left;
+}
+.mask-box span{
+ display: inline-block;
+ color: #666461;
+ margin-left:.53333rem;
+  line-height: .96rem;
+}
+.mask-box span.active{
+ color:#ed6460
+}
+.mask-box .select-tags{
+ margin-left: 0.8rem;
+}
+.mask-box .select-label{
+  width: 0.8rem;
+  position: absolute;
+  left: 0;
+  top: 0rem;
+  color: #c3c3c3;
+}
