@@ -5,6 +5,7 @@ import GoHome from '../../compontents/goHome/goHome.js';
 import './person.css'
 import head  from '../../images/person-default.png';
 import {GetQueryString} from '../../utils/commit.js';
+import {url} from '../../utils/href.js';
 export default class Person extends Component{
 
  constructor(props){
@@ -23,7 +24,7 @@ export default class Person extends Component{
        this.setState({
           openid:openid
         })
-       axios.get("http://wx.devtop.top/user/info",{
+       axios.get(`${url}/user/info`,{
         params:{
           openid:openid
         }

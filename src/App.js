@@ -9,6 +9,8 @@ import Pay from './routes/pay/pay.js';
 import History from './routes/history/history.js';
 import Test from './routes/test/test.js';
 import HongBao from './routes/hongbao/hongbao';
+import Detail from './routes/detail/detail';
+import DetailBook from './routes/detailBook/detailBook';
 import  './styles/reset.css';
 class App extends Component {
   render() {
@@ -26,6 +28,8 @@ class App extends Component {
            <Route path="/history" component={History} />
            <Route path="/test" component={Test} />
            <Route path="/hongBao" component={HongBao} />
+           <Route path="/detail" component={Detail} />
+           <Route path="/detail_book" component={DetailBook} />
           </Switch>
         </Router>
       </div>

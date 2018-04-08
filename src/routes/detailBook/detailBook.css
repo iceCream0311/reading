@@ -1,0 +1,122 @@
+.detail-book{
+ font-size: 0.32rem
+}
+.detail-book .m-bookcover{
+ padding:0.4rem 0;
+}
+.detail-book .inner{
+ overflow: hidden;
+}
+.detail-book .inner>div{
+ float: left;
+}
+.detail-book .img{
+ width: 2.69333rem;
+ height: 3.30667rem;
+ box-shadow: 0 0 0.13333rem #666;
+ margin-right: .4rem;
+}
+.detail-book .img img{
+ display: block;
+ width: 100%;
+ height: 100%;
+ vertical-align: top;
+}
+.detail-book .detail{
+ width: 6.1rem;
+}
+.detail-book .summary{
+ width: 100%;
+ clear: both;
+ position: relative;
+ margin-top: .66667rem;
+ margin-bottom: .4rem;
+ height: 1.49333rem;
+ color: #666461;
+ overflow: hidden;
+ max-height: 10rem;
+}
+.m-bookcover h2, .m-bookcover h6 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.m-bookcover h2 {
+ font-size: .45333rem;
+ color: #24211f;
+ line-height: .64rem;
+ display: -webkit-box;
+ /*! autoprefixer: off */
+ -webkit-box-orient: vertical;
+ /* autoprefixer: on */
+ -webkit-line-clamp: 2;
+ line-height: 1.5;
+ max-height: 3;
+}
+.m-bookcover h6 {
+ font-size: .32rem;
+ line-height: .45333rem;
+ color: #8a8886;
+ white-space: nowrap;
+ line-height: 1.5;
+}
+.m-bookcover .read {
+ margin-top: 0.744rem;
+ display: inline-block;
+ width: 5.33333rem;
+ height: .93333rem;
+ line-height: .93333rem;
+ text-align: center;
+ background-color: #ed6460;
+ border-radius: .08rem;
+ font-size: .42667rem;
+ color: #fff;
+}
+.m-bookcover .summary content {
+ line-height: .52rem;
+ font-size: .37333rem;
+}
+.m-bookcover .summary .summary-more {
+ position: absolute;
+ bottom: -.05333rem;
+ right: .13333rem;
+ width: 1.21333rem;
+ height: .6rem;
+ background: url(../../images/shenlvehao.png) 0 0 no-repeat;
+ background-size: 100% 100%;
+}
+.m-bookcover .new a {
+ display: block;
+ position: relative;
+}
+.m-bookcover .new i {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: .58667rem;
+ height: .58667rem;
+ background: url(../../images/item.png) 0 0 no-repeat;
+ background-size: 100% 100%;
+}
+.m-bookcover .new span {
+ font-size: .37333rem;
+ color: #24211f;
+ display: inline-block;
+ width: 7.2rem;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ line-height: 1.5;
+ overflow: hidden;
+ position: relative;
+ text-indent: .58667rem;
+ top: .04rem;
+}
+.m-bookcover .new span.state {
+ float: right;
+ width: auto;
+ margin-top: .02667rem;
+ font-size: .32rem;
+ color: #369926;
+}
+.m-bookcover .summary.expanded {
+ height: auto;
+}

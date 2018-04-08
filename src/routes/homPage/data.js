@@ -1,5 +1,12 @@
 const homeData=[
-{"sourceUuid":"np_dH49e8QQ2HH_-WkkK2l7yxPYcaGvMyErP3nJFNlwoa1VJQ","title":"官途：权色撩人","cover":"https://easyreadfs.nosdn.127.net/nfb.367f3edaa4ff43009f5528734428d969.jpg","author":"丁公子","totalCount":"414.2万","serial":true,"category":"官场职场","description":"智谋如妖，仕途之路争斗不断，一路横推对手，平步青云。青云之路，美人环绕，一路开到荼靡。不断登临权力之巅，财富、美色纷至沓来，各色人物粉墨登场。人生如戏，戏如人生。欲知官妖如何决胜千里，请看官场草根的逆袭之路。"},
+{"sourceUuid":"np_dH49e8QQ2HH_-WkkK2l7yxPYcaGvMyErP3nJFNlwoa1VJQ",
+"title":"官途：权色撩人",
+"cover":"https://easyreadfs.nosdn.127.net/nfb.367f3edaa4ff43009f5528734428d969.jpg",
+"author":"丁公子",
+"totalCount":"414.2万",
+"serial":true,
+"category":"官场职场",
+"description":"智谋如妖，仕途之路争斗不断，一路横推对手，平步青云。青云之路，美人环绕，一路开到荼靡。不断登临权力之巅，财富、美色纷至沓来，各色人物粉墨登场。人生如戏，戏如人生。欲知官妖如何决胜千里，请看官场草根的逆袭之路。"},
 {"sourceUuid":"np_IilrLMlB3n-s-Dp0K2ovmUiLI679OikmbS2YE49z_a1VJQ","title":"官路","cover":"https://easyreadfs.nosdn.127.net/nfb.6f2095f2bae84da5855888d7875e35ce.jpg","author":"钓人的鱼","totalCount":"582.8万","serial":true,"category":"官场职场","description":"为官者，踏出一步，就是一个脚印，对了，那是份内之事，错了，前面就是万丈深渊；本书的姊妹篇，也可以说是《官梯》的续集，《村长的妖孽人生》正在网易云阅读火热连载，《官梯》里没有交代的事这里都会交代清楚，敬请观赏。http://yuedu.163.com/source/1b7140a1bb4e4ec3bcbb08e5e0093cee_4另有完本作品《国色天香》也在网易云阅读。"},
 {"sourceUuid":"np_c3xtL8lH3XCs_WshKz8kyRPfJK-tP3Ioai-cF49-qftVJQ","title":"一号秘书：陆一伟传奇","cover":"https://easyreadfs.nosdn.127.net/novel_c2408b035eca4fa199ff1f633bd0d756.jpeg","author":"万路之遥","totalCount":"367.3万","serial":true,"category":"官场职场","description":"陆一伟，一个铁骨铮铮，有血有肉的七尺男儿，他心系群众，种植果园不忘百姓，舍弃己利无偿捐赠；他侠骨仁心，兄弟落难两肋插刀，重情重义肝胆相照；他饱尝妻离子散、亲友远离的人间冷暖，面对爱情、友情、亲情的抉择，却另辟蹊径，重新打开了通往成功的大门。这是一部充满正能量的写实小说，一部小人物百折不挠、不卑不亢的心路历程，用打脱牙和血吞的毅力书写着平凡的人生。此文谨献给奋斗路上的你我，一起见证一段不一样的奋斗历程……qq:406002220，欢迎大家一起交流探讨。"},
 {"sourceUuid":"np_KHw4K85J3Xas_zhwKzl5yBCNJquoPHQrOHzKE4p3rKlVJQ","title":"兵王都市传奇","cover":"https://easyreadfs.nosdn.127.net/nfb.f9bc2c574e6948d3bb0a60d11c5128c3.jpg","author":"我自对天笑","totalCount":"683.6万","serial":true,"category":"都市生活","description":"雇佣兵王陈扬回归都市，只为保护战友的女神妹妹。繁华都市里，陈扬如鱼得水，逍遥自在。且看一代兵王如何用铁拳和智慧打下一片商业帝国……欲了解四帝更多故事，请微信公众号搜索天道盟。"},

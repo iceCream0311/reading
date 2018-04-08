@@ -18,6 +18,7 @@ body a {
     color: #666461;
 
 }
+p{font-size: 0.32rem}
 /*将input默认属性更改*/
 input {
   border-width: 0px;

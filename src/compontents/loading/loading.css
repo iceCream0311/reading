@@ -1,0 +1,30 @@
+/* ---------加载动画--------- */
+.loading-box{position: relative; width:0.6rem;height:0.6rem;margin:0.3rem auto;display:flex;-webkit-flex:0 1 auto;flex:0 1 auto;-webkit-flex-direction:column;flex-direction:column;-webkit-flex-grow:1;flex-grow:1;-webkit-flex-shrink:0;flex-shrink:0;-webkit-flex-basis:25%;flex-basis:25%;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;}
+.loading-box>div{position: relative;}
+.loading-circle{position:relative;font-size:0;position: relative;}
+.loading-box .circle,
+.loading-box .circle1,
+.loading-box .circle2,
+.loading-box .circle3,
+.loading-box .circle4,
+.loading-box .circle5,
+.loading-box .circle6,
+.loading-box .circle7{
+  background-color:#4DAF7C;height:0.15rem;width:0.05rem;margin:0.02rem;border-radius:0.02rem;animation-fill-mode:both;position:absolute;
+}
+.loading-box .circle7{top:0.2rem;left:0;animation:animte 1.2s 0.12s infinite ease-in-out;}
+.loading-box .circle {top:0.13636363636363637rem;left:0.13636363636363637rem;transform:rotate(-45deg);animation:animte 1.2s 0.24s infinite ease-in-out;}
+.loading-box .circle1{top:0;left:0.2rem;transform:rotate(90deg);animation:animte 1.2s 0.36s infinite ease-in-out;}
+.loading-box .circle2{top:-0.13636363636363637rem;left:0.13636363636363637rem;transform:rotate(45deg);animation:animte 1.2s 0.48s infinite ease-in-out;}
+.loading-box .circle3{top:-0.2rem;left:0;animation:animte 1.2s 0.6s infinite ease-in-out;}
+.loading-box .circle4{top:-0.13636363636363637rem;left:-0.13636363636363637rem;transform:rotate(-45deg);animation:animte 1.2s 0.72s infinite ease-in-out;}
+.loading-box .circle5{top:0;left:-0.2rem;transform:rotate(90deg);animation:animte 1.2s 0.84s infinite ease-in-out;}
+.loading-box .circle6{top:0.13636363636363637rem;left:-0.13636363636363637rem;transform:rotate(45deg);animation:animte 1.2s 0.96s infinite ease-in-out;}
+@keyframes animte {
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+      opacity: 1;
+  }
+}

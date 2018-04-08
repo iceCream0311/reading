@@ -1,6 +1,9 @@
 import React, { Component} from 'react';
 import  {Link}from 'react-router-dom';
 import  './homePage.css';
+import axios from 'axios';
+import {url} from '../../utils/href.js';
+import Loading from '../../compontents/loading/loading';
 import search from '../../images/search.png';
 import person from '../../images/person.png';
 import coin from '../../images/coin.png';
@@ -8,9 +11,6 @@ import book from '../../images/book.png';
 import tj1 from '../../images/tj1.jpg';
 import tj2 from '../../images/tj2.jpg';
 import tj3 from '../../images/tj3.jpg';
-import man1 from '../../images/man1.jpg';
-import man2 from '../../images/man2.jpg';
-import man3 from '../../images/man3.jpg';
 import changebtn from '../../images/change.png';
 import homeData from './data.js';
 import {changeActiveColor,GetQueryString} from '../../utils/commit.js';
@@ -21,16 +21,13 @@ export default class HomePage extends Component {
    this.state={
     category:"man",
     openid:null,
+    loading:false,
     tjArr:[
      {url:"/",img:tj1,title:"总裁欺上身，娇妻晚上见",author:"琪安"},
      {url:"/",img:tj2,title:"最强兵痞",author:"二斗"},
      {url:"/",img:tj3,title:"腹黑陆少你太坏",author:"江枫眠"}
      ],
-      manArr:[
-     {url:"/",img:man1,title:"官途：权色撩人",author:"丁公子"},
-     {url:"/",img:man2,title:"官路",author:"钓人的鱼"},
-     {url:"/",img:man3,title:"一号秘书：陆一伟传奇",author:"万路之遥"}
-     ]
+      manArr:[]
     }
  }
  componentWillMount(){
@@ -44,16 +41,37 @@ export default class HomePage extends Component {
   }
  }
  componentDidMount(){
+  this.categoryFn(2)
     /*let id=this.props.match.params.id*/
  }
-
+categoryFn=(type)=>{
+   this.setState({
+    loading:true
+   })
+  axios.get(`${url}/novel/order`,{
+     params:{
+       categoryId:type
+     }
+    })
+   .then((res)=>{
+   this.setState({
+    manArr:res.data.body,
+    loading:false
+   })
+   })
+   .catch((error)=>{
+    console.log(error)
+   })
+}
  changeColor=(e)=>{
     var dom=e.currentTarget;
     changeActiveColor(dom)
+    /*调用查询*/
+    this.categoryFn(dom.getAttribute("data-category"))
     this.setState({
       category:dom.getAttribute("data-category")
     },function(){
-      console.log(this.state.category)
+       console.log(this.state.category)
     })
   }
  render(){
@@ -94,21 +112,22 @@ export default class HomePage extends Component {
       <Link to={this.state.openid?`/category?openid=${this.state.openid}`:"/category"} className="more">更多<em className="arrow"></em></Link>
     </div>
     <ul className="ranking-tabs">
-      <li onClick={this.changeColor} data-category="woman">女生</li>
-      <li onClick={this.changeColor} data-category="man" className="active">男生</li>
-      <li  onClick={this.changeColor} data-category="ca">出版</li>
+      <li onClick={this.changeColor} data-category="3">女生</li>
+      <li onClick={this.changeColor} data-category="2" className="active">男生</li>
+      <li  onClick={this.changeColor} data-category="4">出版</li>
     </ul>
     <div className="container">
        <ul className="book-list">
         {
+         this.state.loading?<Loading />:
          this.state.manArr.map((item,index)=>{
           return(
            <li key={index}>
             <b className="index">{index+1}</b>
-            <Link to={item.url}>
+            <Link to={this.state.openid?`/detail?id=${item.id}&openid=${this.state.openid}`:"/detail"}>
              <div className="book-list-top">
-              <img src={item.img} alt={item.title}/>
-              <h3>{item.title}</h3>
+              <img src={item.novelcover} alt={item.name}/>
+              <h3>{item.name}</h3>
               <p className="author">{item.author}</p>
              </div>
             </Link>
@@ -116,24 +135,44 @@ export default class HomePage extends Component {
            )
          })
         }
+        {/*如果没有数据*/}
+        { this.state.manArr.length<1&&<p>暂无更多内容</p>}
         </ul>
         <ul className="book-list-bottom">
         {
-         homeData.slice(3,9).map((item,index)=>{
+          /*如果数据超过十条*/
+        this.state.manArr.length>10?
+         this.state.manArr.slice(3,9).map((item,index)=>{
           return(
            <li key={index}>
-            <Link  to="">
+            <Link  to={item.id}>
               <span className="index">{index+4}.</span>
               <span className="tag">{item.category}</span>
-              <span className="title">{item.title}</span>
+              <span className="title">{item.name}</span>
               <span className="author f-fr">{item.author}</span>
             </Link>
            </li>
            )
-         })
+         }):""
+        }
+        {
+           /*如果数据超过3条*/
+        this.state.manArr.length<10&&this.state.manArr.length>3?
+         this.state.manArr.slice(3,this.state.manArr.length-1).map((item,index)=>{
+          return(
+           <li key={index}>
+            <Link  to={item.id}>
+              <span className="index">{index+4}.</span>
+              <span className="tag">{item.category}</span>
+              <span className="title">{item.name}</span>
+              <span className="author f-fr">{item.author}</span>
+            </Link>
+           </li>
+           )
+         }):""
         }
        </ul>
-       <Link className="btn-more" to={this.state.openid?`/category?openid=${this.state.openid}`:"/category"}>更多</Link>
+       {this.state.manArr.length>10&&<Link className="btn-more" to={this.state.openid?`/category?openid=${this.state.openid}`:"/category"}>更多</Link>}
      </div>
      <div className="copyright">
        <p>杭州酷炫书城信息技术有限公司版权所有©2017-2018</p>
