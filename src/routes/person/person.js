@@ -19,7 +19,6 @@ export default class Person extends Component{
  }
   componentDidMount(){
     if (GetQueryString("openid")) {
-      alert("openid="+GetQueryString("openid"))
       let openid=GetQueryString("openid")
        this.setState({
           openid:openid

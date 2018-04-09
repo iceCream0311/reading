@@ -1,0 +1,57 @@
+.detail-list .total{
+ padding:0.4rem 0;
+ overflow: hidden;
+}
+.detail-list .total span{
+  font-size: .37333rem;
+  color: #8a8886;
+  float: left;
+}
+.detail-list .total .order {
+ font-size: .37333rem;
+ width: 1.13333rem;
+ height: .53333rem;
+ box-sizing: border-box;
+ text-align: center;
+ color: #999794;
+ line-height: .53333rem;
+ float: right;
+ border: .02667rem solid #999794;
+ border-radius: 100px;
+ display: none;
+}
+.detail-list ul {
+ margin-top: .29333rem;
+}
+.detail-list ul li{
+ position: relative;
+ height: 1.10667rem;
+ line-height: 1.10667rem;
+ border-bottom: .02667rem dotted #979797;
+}
+.detail-list ul li.no-read:after{
+ content: "";
+ position: absolute;
+ width: .45333rem;
+ height: .45333rem;
+ top: .33333rem;
+ right: .04rem;
+ background:url(../../images/clock.png) 0 0 no-repeat;
+ background-size: 100% 100%;
+}
+.detail-list ul li a {
+ display: inline-block;
+ width: 85%;
+ height: 100%;
+ font-size: .37333rem;
+ color: #24211f;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}
+.detail-list ul li.no-read a {
+    color: #c3c3c3;
+}
+.detail-list ul li .red{
+ color: #ed6460
+}

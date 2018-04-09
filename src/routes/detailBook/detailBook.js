@@ -19,13 +19,23 @@ export default class DetailBook extends Component {
    classCategoryName:"",
    status:"",
    showFlag:false
-  }
+  },
+  listData:[],
+  openid:"",
+  novelId:""
+
   }
  }
  componentWillMount(){
    /* novelId:文章id*/
  let novelId=GetQueryString("id");
- axios.get(`${url}/novel/info`,{
+ let openid=GetQueryString("openid");
+ this.setState({
+  novelId:novelId,
+  openid:openid
+ })
+ /* 获取小说详情*/
+  axios.get(`${url}/novel/info`,{
     params:{
       novelid:novelId
     }
@@ -38,7 +48,19 @@ export default class DetailBook extends Component {
   .catch((error)=>{
    console.log(error)
   })
-
+  /* 获取小说章节列表*/
+  axios.get(`${url}/novel/chapter/list`,{
+    params:{
+      openId:openid,
+      novelId:novelId
+    }
+   })
+  .then((res)=>{
+   this.setState({listData:res.data.body.chapter})
+  })
+  .catch((error)=>{
+   console.log(error)
+  })
  }
  showFn=()=>{
   console.log(1111111)
@@ -61,21 +83,42 @@ export default class DetailBook extends Component {
        <h2>{this.state.data.name}</h2>
        <h6>{this.state.data.classCategoryName} |{this.state.data.author}</h6>
        <h6>{(this.state.data.wordcount/10000).toFixed(2)}万字 | 1.04亿次点击</h6>
-       <a className="read" href="/">立即阅读</a>
+       <Link className="read" to={this.state.openid?`/detail?id=${this.state.novelId}&openid=${this.state.openid}`:`/detail?id=${this.state.novelId}`}>立即阅读</Link>
        </div>
        <div className={this.state.showFlag?"summary expanded":"summary"}>
         <content onClick={this.showFn}>{this.state.data.description}</content>
         {!this.state.showFlag?<span className="summary-more" onClick={this.showFn}></span>:""}
         </div>
         <div className="new">
-        <a href="/">
+        <Link to={this.state.openid?`/detail?id=${this.state.novelId}&openid=${this.state.openid}&chapter=${this.state.data.lastchapter}`:`/detail?id=${this.state.novelId}&lastchapter=${this.state.data.lastchapter}`}>
         <i></i>
         <span>当前更新至 第{this.state.data.lastchapter}章 金蝉脱壳</span>
         <span className="state">{this.state.data.status==="1"&&"连载中"}</span>
-        </a>
+        </Link>
       </div>
      </div>
      </div>
+    </div>
+    <div className="m-menu">
+      <ul>
+      {
+        this.state.listData>3?
+        this.state.listData.slice(0,3).map((item)=>{
+          return(
+            <li key={item.chapter_id}>
+            <Link to={`/detail?id=${item.novel_id}&openid=${this.state.openid}&chapter=${item.chapter_id}`}>{item.chapter_id}、{item.title}</Link>
+            </li>)
+        }):
+        this.state.listData.slice(0,3).map((item)=>{
+          return(
+            <li key={item.chapter_id}>
+             <Link to={`/detail?id=${item.novel_id}&openid=${this.state.openid}&chapter=${item.chapter_id}`}>{item.chapter_id}、{item.title}</Link>
+            </li>
+            )
+        })
+      }
+      </ul>
+      <div className="directory"><Link  to={`/detail_list?id=${this.state.novelId}&openid=${this.state.openid}`}>全部目录</Link></div>
     </div>
    </div>
    )

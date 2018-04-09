@@ -27,7 +27,10 @@ export default class HomePage extends Component {
      {url:"/",img:tj2,title:"最强兵痞",author:"二斗"},
      {url:"/",img:tj3,title:"腹黑陆少你太坏",author:"江枫眠"}
      ],
-      manArr:[]
+      manArr:[],
+      historytitle:"",
+      historychapterId:0,
+      historynovelId:1
     }
  }
  componentWillMount(){
@@ -38,12 +41,31 @@ export default class HomePage extends Component {
     this.setState({
       openid:openid
     })
-  }
+    axios.get(`${url}/novel/history/last`,{
+      params:{
+        openId:openid
+      }
+     })
+    .then((res)=>{
+     this.setState({
+        historytitle:res.data.body.title,
+        historychapterId:res.data.body.chapterId,
+        historynovelId:res.data.body.novelId
+
+     })
+    })
+    .catch((error)=>{
+     console.log(error)
+    })
+    }
  }
  componentDidMount(){
   this.categoryFn(2)
-    /*let id=this.props.match.params.id*/
+  /*************读到第几章*************/
+
+console.log(this.state.historyData)
  }
+ /*************排行*************/
 categoryFn=(type)=>{
    this.setState({
     loading:true
@@ -63,6 +85,7 @@ categoryFn=(type)=>{
     console.log(error)
    })
 }
+/*************点击更换颜色并请求数据*************/
  changeColor=(e)=>{
     var dom=e.currentTarget;
     changeActiveColor(dom)
@@ -120,7 +143,7 @@ categoryFn=(type)=>{
        <ul className="book-list">
         {
          this.state.loading?<Loading />:
-         this.state.manArr.map((item,index)=>{
+         this.state.manArr.slice(0,3).map((item,index)=>{
           return(
            <li key={index}>
             <b className="index">{index+1}</b>
@@ -145,7 +168,7 @@ categoryFn=(type)=>{
          this.state.manArr.slice(3,9).map((item,index)=>{
           return(
            <li key={index}>
-            <Link  to={item.id}>
+            <Link  to={this.state.openid?`/detail?id=${item.id}&openid=${this.state.openid}`:"/detail"}>
               <span className="index">{index+4}.</span>
               <span className="tag">{item.category}</span>
               <span className="title">{item.name}</span>
@@ -175,13 +198,13 @@ categoryFn=(type)=>{
        {this.state.manArr.length>10&&<Link className="btn-more" to={this.state.openid?`/category?openid=${this.state.openid}`:"/category"}>更多</Link>}
      </div>
      <div className="copyright">
-       <p>杭州酷炫书城信息技术有限公司版权所有©2017-2018</p>
-       <p>浙ICP备17039369号</p>
+       <p>北京微游科技有限公司版权所有©2018</p>
+       <p>京ICP备16058317号 -1</p>
      </div>
      <div className="lastReadTip">
-      <Link to={this.state.openid?`/?openid=${this.state.openid}`:"/"}>
+      <Link to={this.state.openid?`/detail?openid=${this.state.openid}&chapter=${this.state.historychapterId}&id=${this.state.historynovelId}`:"/"}>
        <b className="icon icon-bookmarket"></b>
-       <p className="desc">上次看到《兵王都市传奇》，点击继续</p>
+       <p className="desc">上次看到《{this.state.historytitle}》，点击继续</p>
        <b className="arrow"></b>
       </Link>
      </div>

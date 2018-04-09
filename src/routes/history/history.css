@@ -149,6 +149,10 @@
 }
 #history .confirmModal .content {
  padding: .76rem;
+ border-bottom: 1px solid rgba(0,0,0,.05);
+}
+#history .confirmModal .btn-cancel{
+  border-right: 1px solid rgba(0,0,0,.05);
 }
 .confirmModal .content p {
  font-size: .48rem;
@@ -161,6 +165,10 @@
  box-sizing: border-box;
  padding: .29333rem 0;
  text-align: center;
+}
+#history .tip{
+  background-color: #fff;
+  color:#333
 }
 .confirmModal .action .btn-ok {
  color: #4da8f7;

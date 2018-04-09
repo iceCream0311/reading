@@ -10,7 +10,7 @@ export default class Detail extends Component {
     /* novelId:文章id chapterId:文章章节 openid:用户id loading:加载显示  chaptercount:章节总数 themFlag:风格设置是否展示*/
      this.state={
       novelId:1,
-      chapterId:1,
+      chapterId:0,
       openid:null,
       loading:false,
       themFlag:false,
@@ -22,12 +22,17 @@ export default class Detail extends Component {
   }
    componentWillMount(){
     let them=localStorage.getItem("reader_theme");
+    let chapter=GetQueryString("chapter");
     /*默认颜色*/
     if (them) {
       this.setState({
         them:them
       })
-
+    }
+    if (chapter) {
+      this.setState({
+        chapterId:chapter
+      })
     }
     let openid=GetQueryString("openid");
     let novelId=GetQueryString("id");
@@ -42,6 +47,7 @@ export default class Detail extends Component {
      }
     })
    .then((res)=>{
+    console.log(res)
     this.setState({
       chaptercount:res.data.body.chaptercount
     })
@@ -53,7 +59,6 @@ export default class Detail extends Component {
  componentDidMount(){
   /*默认章节*/
   this.searchData()
-
  }
  /* 搜索章节*/
  searchData=()=>{
@@ -70,7 +75,8 @@ export default class Detail extends Component {
    .then((res)=>{
     this.setState({
       title:res.data.body.title,
-      content:res.data.body.content
+      content:res.data.body.content,
+      chapterId:res.data.body.chapterId
     })
    })
    .catch((error)=>{
@@ -80,7 +86,7 @@ export default class Detail extends Component {
 /* 上一章*/
  preFn=()=>{
   if (this.state.chapterId===1) {
-    console.log("已经是第一章")
+    alert("已经是第一章")
   }else{
     this.setState({
       chapterId:(this.state.chapterId-1)
@@ -92,7 +98,7 @@ export default class Detail extends Component {
  /* 下一章*/
  nextFn=()=>{
  if (this.state.chapterId===this.state.chaptercount) {
-    console.log("已经是最后一张")
+   alert("已经是最后一张")
   }else{
      this.setState({
       chapterId:(this.state.chapterId+1)
@@ -110,7 +116,6 @@ export default class Detail extends Component {
  }
  changeThemFn=(e)=>{
   let them=e.currentTarget.getAttribute("data-them")
-
   localStorage.setItem("reader_theme",them);
   changeActiveColor(e.currentTarget)
   this.setState({
@@ -136,14 +141,14 @@ export default class Detail extends Component {
          }
         </div>
         <div className="btn-list">
-          <Link to="/">目录</Link>
+          <Link to={`/detail_list?id=${this.state.novelId}&openid=${this.state.openid}`}>目录</Link>
           <Link to={this.state.openid?`/history?openid=${this.state.openid}`:"/history"}>阅读历史</Link>
           <Link to={this.state.openid?`/pay?openid=${this.state.openid}`:"/pay"} className="acitve">充值</Link>
           <span onClick={this.preFn}>上一章</span>
           <Link to={this.state.openid?`/?openid=${this.state.openid}`:"/"}>首页</Link>
-          <Link to={this.state.openid?`/category?rank=${this.state.openid}`:"/rank"}>更多都市生活</Link>
+          <Link to={this.state.openid?`/rank?openid=${this.state.openid}`:"/rank"}>更多都市生活</Link>
           <Link to="/">打开自动购买</Link>
-          <Link to={`/detail_book?id=${this.state.novelId}`}>详情页面</Link>
+          <Link to={this.state.openid?`/detail_book?id=${this.state.novelId}&openid=${this.state.openid}`:`/detail_book?id=${this.state.novelId}`}>详情页面</Link>
           <Link to={this.state.openid?`person?openid=${this.state.openid}`:"/person"}>个人中心</Link>
         </div>
       </div>

@@ -1,8 +1,10 @@
 .detail-book{
- font-size: 0.32rem
+ font-size: 0.32rem;
+
 }
 .detail-book .m-bookcover{
  padding:0.4rem 0;
+ background-color:#fff
 }
 .detail-book .inner{
  overflow: hidden;
@@ -119,4 +121,41 @@
 }
 .m-bookcover .summary.expanded {
  height: auto;
+}
+.detail-book .m-menu{
+ padding-top: .21333rem;
+ background-color: #f4f4f4
+}
+/* background-color: #f4f4f4 */
+.detail-book .m-menu ul {
+  padding: .4rem;
+  background-color:#fff;
+}
+.m-menu li, .m-menu li a {
+ display: block;
+ height: .77333rem;
+ line-height: .77333rem;
+ font-size: .37333rem;
+ color: #8a8886;
+ overflow: hidden;
+ word-break: break-all;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}
+.m-menu .directory{
+ background-color: #fff;
+ text-align: center;
+ padding: .13333rem 0;
+}
+.m-menu .directory a{
+ display: inline-block;
+ width: 6.68rem;
+ height: .93333rem;
+ line-height: .93333rem;
+ text-align: center;
+ box-sizing: border-box;
+ border: .02667rem solid #666461;
+ border-radius: .08rem;
+ color: #666;
+ font-size: .37333rem;
 }

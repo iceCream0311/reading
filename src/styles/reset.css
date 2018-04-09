@@ -3,7 +3,7 @@ html{
    font-size: 10vw
 }
 html,body { width: 100%; min-height: 100%;background-color: #fff;}
-body,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,p {margin: 0;padding:0;font-weight:normal;font-family: Arial,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;color: #666461 }
+body,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,p {margin: 0;padding:0;font-weight:normal;font-family: Arial,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;color: #666461;font-size: 0.32rem }
 ul,ol { padding: 0;}
 ul li,ol li{list-style: none}
 strong{font-weight: normal;}
