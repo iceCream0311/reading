@@ -40,21 +40,6 @@ export default class Detail extends Component {
       openid:openid,
       novelId:novelId
     })
-    /*请求总共章节*/
-    axios.get(`${url}/novel/info`,{
-     params:{
-       novelid:novelId
-     }
-    })
-   .then((res)=>{
-    console.log(res)
-    this.setState({
-      chaptercount:res.data.body.chaptercount
-    })
-   })
-   .catch((error)=>{
-    console.log(error)
-   })
 }
  componentDidMount(){
   /*默认章节*/
@@ -69,14 +54,15 @@ export default class Detail extends Component {
      params:{
        novelId:novelId,
        openId:openid,
-       chapterId:chapterId
+       chapterId:chapterId,
      }
   })
    .then((res)=>{
     this.setState({
       title:res.data.body.title,
       content:res.data.body.content,
-      chapterId:res.data.body.chapterId
+      chapterId:res.data.body.chapterId,
+      chaptercount:res.data.body.lastchapterId
     })
    })
    .catch((error)=>{
@@ -85,18 +71,20 @@ export default class Detail extends Component {
  }
 /* 上一章*/
  preFn=()=>{
-  if (this.state.chapterId===1) {
+  if (this.state.chapterId<=1) {
     alert("已经是第一章")
   }else{
     this.setState({
       chapterId:(this.state.chapterId-1)
     },()=>{
-      this.searchData()
+      this.searchData();
+      this.node.scrollIntoView();
     })
   }
  }
  /* 下一章*/
  nextFn=()=>{
+
  if (this.state.chapterId===this.state.chaptercount) {
    alert("已经是最后一张")
   }else{
@@ -104,6 +92,7 @@ export default class Detail extends Component {
       chapterId:(this.state.chapterId+1)
     },()=>{
       this.searchData()
+      this.node.scrollIntoView();
     })
   }
  }
@@ -124,7 +113,7 @@ export default class Detail extends Component {
  }
  render(){
   return(
-    <div id="detail" className={this.state.them}>
+    <div id="detail" className={this.state.them} ref={node => this.node = node}>
       <div className="container">
         <h2>{this.state.title}</h2>
         <div dangerouslySetInnerHTML={{__html:this.state.content}}></div>
