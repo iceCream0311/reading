@@ -4,6 +4,7 @@ import {RecommendArr} from './data.js';
 import {GetQueryString} from '../../utils/commit.js';
 import axios from 'axios';
 import {url} from '../../utils/href.js';
+import Remind from '../../compontents/remind/remind';
 import './history.css'
 export default class History extends Component {
  constructor(props){
@@ -13,10 +14,13 @@ export default class History extends Component {
     markeflag:false,
     openid: 0,
     recommendList:[],
-    delall:false
+    delall:false,
+    remind:"已删除成功",
+    remindFlag:true
    }
  }
   componentDidMount(){
+
      this.search()
  }
  /* 清空历史记录*/
@@ -24,9 +28,10 @@ export default class History extends Component {
   this.setState({
    delKey:0,
    markeflag:true,
-   delall:true
+   delall:true,
+   remind:"已清空历史",
   })
- }
+}
  delFn=(e)=>{
   e.stopPropagation();
   e.nativeEvent.stopImmediatePropagation();
@@ -76,7 +81,17 @@ scaleFn=()=>{
     }
    })
   .then((res)=>{
-    alert("已删除成功");
+    this.setState({
+    remindFlag:false,
+    })
+    setTimeout(
+        () => {
+          this.setState({
+            remindFlag:true
+          })
+        },
+        2000
+    );
     search()
   })
   .catch((error)=>{
@@ -91,6 +106,7 @@ scaleFn=()=>{
     <span className="margin-dom">
     </span><Link to={this.state.openid?`/?openid=${this.state.openid}`:"/"}>首页</Link>
    </div>
+   {!this.state.remindFlag&&<Remind remind={this.state.remind}/>}
     <div className="container">
      <ul className="Recommend">
      {

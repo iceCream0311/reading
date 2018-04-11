@@ -4,6 +4,7 @@ import  './detail.css';
 import axios from 'axios';
 import {url} from '../../utils/href.js';
 import {GetQueryString,changeActiveColor} from '../../utils/commit.js';
+import Remind from '../../compontents/remind/remind';
 export default class Detail extends Component {
  constructor(props){
      super(props);
@@ -17,6 +18,8 @@ export default class Detail extends Component {
       them:"btn-theme-light",
       content:"",
       title:"",
+      remind:"已经是第一章",
+      remindFlag:true,
       chaptercount:1
    }
   }
@@ -72,7 +75,17 @@ export default class Detail extends Component {
 /* 上一章*/
  preFn=()=>{
   if (this.state.chapterId<=1) {
-    alert("已经是第一章")
+    this.setState({
+    remindFlag:false
+    })
+    setTimeout(
+      () => {
+        this.setState({
+          remindFlag:true
+        })
+      },
+      2000
+    );
   }else{
     this.setState({
       chapterId:(this.state.chapterId-1)
@@ -86,7 +99,18 @@ export default class Detail extends Component {
  nextFn=()=>{
 
  if (this.state.chapterId===this.state.chaptercount) {
-   alert("已经是最后一张")
+    this.setState({
+    remindFlag:false,
+    remind:"已经是最后一张"
+    })
+    setTimeout(
+      () => {
+        this.setState({
+          remindFlag:true
+        })
+      },
+      2000
+    );
   }else{
      this.setState({
       chapterId:(this.state.chapterId+1)
@@ -114,6 +138,7 @@ export default class Detail extends Component {
  render(){
   return(
     <div id="detail" className={this.state.them} ref={node => this.node = node}>
+      {!this.state.remindFlag&&<Remind remind={this.state.remind}/>}
       <div className="container">
         <h2>{this.state.title}</h2>
         <div dangerouslySetInnerHTML={{__html:this.state.content}}></div>

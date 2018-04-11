@@ -1,0 +1,20 @@
+#remind{
+ font-size: 0.32rem;
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translateY(-50%);
+ transform: translateX(-50%);
+ background-color: rgba(0,0,0,0.7);
+ padding:0.3rem 0.6rem ;
+ border-radius: 0.1rem;
+ color: #fff;
+ -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+     -ms-transition: all 1s;
+      -o-transition: all 1s;
+         transition: all 1s;
+}
+ #remind.fadein{
+   background-color: rgba(0,0,0,0);
+ }

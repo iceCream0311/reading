@@ -281,6 +281,9 @@
  text-align: center;
  margin-bottom: 2.13333rem;
 }
+.copyright.no-margin{
+  margin-bottom: 0;
+}
 
 .lastReadTip {
   position: fixed;

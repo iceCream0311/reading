@@ -22,6 +22,7 @@ export default class HomePage extends Component {
     category:"man",
     openid:null,
     loading:false,
+    historyFlag:true,
     tjArr:[
      {url:"/",img:tj1,title:"总裁欺上身，娇妻晚上见",author:"琪安"},
      {url:"/",img:tj2,title:"最强兵痞",author:"二斗"},
@@ -34,6 +35,7 @@ export default class HomePage extends Component {
     }
  }
  componentWillMount(){
+
   let openid=GetQueryString("openid");
   if(!openid){
     window.location.replace('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57cfabeea947cb40&redirect_uri=http%3a%2f%2fwx.devtop.top%2fwx&response_type=code&scope=snsapi_userinfo&#wechat_redirect' )
@@ -47,12 +49,18 @@ export default class HomePage extends Component {
       }
      })
     .then((res)=>{
-     this.setState({
+      if (res.data.body) {
+       this.setState({
         historytitle:res.data.body.title,
         historychapterId:res.data.body.chapterId,
         historynovelId:res.data.body.novelId
+        })
+      }else{
+       this.setState({
+        historyFlag:false
+        })
+      }
 
-     })
     })
     .catch((error)=>{
      console.log(error)
@@ -197,17 +205,19 @@ categoryFn=(type)=>{
        </ul>
        {this.state.manArr.length>10&&<Link className="btn-more" to={this.state.openid?`/category?openid=${this.state.openid}`:"/category"}>更多</Link>}
      </div>
-     <div className="copyright">
-       <p>北京微游科技有限公司版权所有©2018</p>
-       <p>京ICP备16058317号 -1</p>
+
+     <div className={this.state.historyFlag?"copyright no-margin":"copyright"}>
+       <p>江西江通文化传媒有限公司版权所有©2018</p>
+       <p>赣ICP备17012908号</p>
      </div>
-     <div className="lastReadTip">
+     {this.state.historyFlag&&<div className="lastReadTip">
       <Link to={this.state.openid?`/detail?openid=${this.state.openid}&chapter=${this.state.historychapterId}&id=${this.state.historynovelId}`:"/"}>
        <b className="icon icon-bookmarket"></b>
        <p className="desc">上次看到《{this.state.historytitle}》，点击继续</p>
        <b className="arrow"></b>
       </Link>
-     </div>
+      </div>
+    }
    </div>
    )
  }
