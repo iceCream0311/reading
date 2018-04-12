@@ -1,6 +1,6 @@
 let changeActiveColor=(dom)=>{
- var domLis=dom.parentNode.childNodes;
- var domClass=dom.getAttribute("class");
+ let domLis=dom.parentNode.childNodes;
+ let domClass=dom.getAttribute("class");
   for (let i = 0; i < domLis.length; i++) {
    let liClass=domLis[i].getAttribute("class")
    if (liClass&&liClass.indexOf("active")!==-1) {
