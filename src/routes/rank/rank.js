@@ -1,6 +1,8 @@
 import  React,{Component} from 'react';
 import homeData from '../homPage/data';
 import  {Link}from 'react-router-dom';
+import axios from 'axios';
+import {url} from '../../utils/href.js';
 import GoHome from '../../compontents/goHome/goHome';
 import {changeActiveColor} from '../../utils/commit.js';
 import {categorys} from './categoryDtata.js';
@@ -8,22 +10,39 @@ import './rank.css';
 
 export default class Rank extends Component{
  constructor(props){
-  super(props)
-  this.state={
-  serial:"全部",
-  wordCount:"全部",
-  category:"全部",
-  categorys:"",
-   show:true
+   super(props)
+  /* novel分类板块novelData数据*/
+   this.state={
+    serial:"全部",
+    wordCount:"全部",
+    category:"全部",
+    novel:"男生",
+    show:true,
+    novelData:[]
   }
+ }
+ componentDidMount(){
+  axios.get(`${url}/novel/category/list`,{
+     params:{
+      type:"1"
+     }
+    })
+   .then((res)=>{
+      this.setState({
+        novelData:res.data.body
+      })
+   })
+   .catch((error)=>{
+    console.log(error)
+   })
  }
   changeColor=(e)=>{
    let dom=e.currentTarget;
    changeActiveColor(dom)
    this.setState({
-     categorys:dom.getAttribute("data-category")
+     novel:dom.getAttribute("data-category")
    },function(){
-     console.log(this.state.categorys)
+     console.log(this.state.novel)
    })
  }
  toggoleFn=(e)=>{
@@ -38,9 +57,9 @@ export default class Rank extends Component{
    <div id="rank">
    <GoHome />
     <ul className="ranking-tabs">
-      <li onClick={this.changeColor}>女生</li>
-      <li onClick={this.changeColor} className="active">男生</li>
-      <li onClick={this.changeColor}>出版</li>
+      <li onClick={this.changeColor} data-category="女生">女生</li>
+      <li onClick={this.changeColor} data-category="男生" className="active">男生</li>
+      <li onClick={this.changeColor} data-category="出版">出版</li>
     </ul>
     <div className="fold-panel">
      <span className={this.state.show?"icon-unfold":"icon-unfold show"} onClick={this.toggoleFn}></span>
@@ -48,28 +67,38 @@ export default class Rank extends Component{
      <p>{this.state.serial}&nbsp;&nbsp;|&nbsp;&nbsp;{this.state.wordCount}&nbsp;&nbsp;|&nbsp;&nbsp;{this.state.category}</p>
       :
      <div className="mask-box">
-      <ul>
        {
-       categorys.params.map((item,index)=>{
+       this.state.novelData.map((item,index)=>{
         return(
-          <li key={index}>
-          <div className="select-label">{item.desc}</div>
-          <div className="select-tags f-fl">
+          <ul>
+          {item.name==this.state.novel?
+             item.childCategory.map((listItem,listIndex)=>{
+              return(
+                <li key={index}>
+                  <div className="select-label">{listItem.name}</div>
+                  <div className="select-tags f-fl">
+                  <span key="全部">全部</span>
+                   {
+                    listItem.childCategory.map((dataItem,listIndex)=>{
+                     let currentSpan=this.state[dataItem["name"]];
+                     return(
+                      <span key={dataItem.value} className={currentSpan===dataItem.name?"active":""}>{dataItem.name}</span>
+                      )
+                    })
+                    }
+                  </div>
+                </li>
+              )
+            })
+            :""
 
-          {
-           item.list.map((listItem,listIndex)=>{
-            let currentSpan=this.state[item["type"]];
-            return(
-             <span key={listItem.value} className={currentSpan===listItem.desc?"active":""}>{listItem.desc}</span>
-             )
-           })
           }
-          </div>
-       </li>
+        </ul>
+
+
          )
        })
        }
-      </ul>
      </div>
      }
     </div>

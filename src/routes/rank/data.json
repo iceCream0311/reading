@@ -1,0 +1,166 @@
+{
+    "body": [{
+        "childCategory": [{
+            "childCategory": [{
+                "fatherId": "10",
+                "id": "5",
+                "isleaf": 1,
+                "name": "官场职场",
+                "order": 0
+            }, {
+                "fatherId": "10",
+                "id": "6",
+                "isleaf": 1,
+                "name": "悬疑探险",
+                "order": 0
+            }, {
+                "fatherId": "10",
+                "id": "7",
+                "isleaf": 1,
+                "name": "都市生活",
+                "order": 0
+            }],
+            "fatherId": "2",
+            "id": "10",
+            "isleaf": 0,
+            "name": "类型",
+            "order": 0
+        }, {
+            "childCategory": [{
+                "fatherId": "8",
+                "id": "11",
+                "isleaf": 1,
+                "name": "连载中",
+                "order": 0
+            }, {
+                "fatherId": "8",
+                "id": "12",
+                "isleaf": 1,
+                "name": "已完结",
+                "order": 0
+            }],
+            "fatherId": "2",
+            "id": "8",
+            "isleaf": 0,
+            "name": "连载",
+            "order": 0
+        }, {
+            "childCategory": [
+            {
+                "fatherId": "9",
+                "id": "13",
+                "isleaf": 1,
+                "name": "30w以下",
+                "order": 0
+            }, {
+                "fatherId": "9",
+                "id": "14",
+                "isleaf": 1,
+                "name": "30w-50w",
+                "order": 0
+            }, {
+                "fatherId": "9",
+                "id": "15",
+                "isleaf": 1,
+                "name": "50w-100w",
+                "order": 0
+            }, {
+                "fatherId": "9",
+                "id": "16",
+                "isleaf": 1,
+                "name": "100w以上",
+                "order": 0
+            }],
+            "fatherId": "2",
+            "id": "9",
+            "isleaf": 0,
+            "name": "字数",
+            "order": 0
+        }],
+        "fatherId": "novel",
+        "id": "2",
+        "isleaf": 0,
+        "name": "男生",
+        "order": 0
+    }, {
+        "childCategory": [{
+            "childCategory": [{
+                "fatherId": "20",
+                "id": "17",
+                "isleaf": 1,
+                "name": "都市言情",
+                "order": 0
+            }, {
+                "fatherId": "20",
+                "id": "18",
+                "isleaf": 1,
+                "name": "穿越架空",
+                "order": 0
+            }, {
+                "fatherId": "20",
+                "id": "19",
+                "isleaf": 1,
+                "name": "宫斗宅斗",
+                "order": 0
+            }],
+            "fatherId": "3",
+            "id": "20",
+            "isleaf": 0,
+            "name": "类型",
+            "order": 0
+        }, {
+            "fatherId": "3",
+            "id": "23",
+            "isleaf": 0,
+            "name": "字数",
+            "order": 0
+        }, {
+            "fatherId": "3",
+            "id": "24",
+            "isleaf": 0,
+            "name": "连载",
+            "order": 0
+        }],
+        "fatherId": "novel",
+        "id": "3",
+        "isleaf": 0,
+        "name": "女生",
+        "order": 0
+    }, {
+        "childCategory": [{
+            "childCategory": [{
+                "fatherId": "21",
+                "id": "22",
+                "isleaf": 0,
+                "name": "人文社科",
+                "order": 0
+            }],
+            "fatherId": "4",
+            "id": "21",
+            "isleaf": 0,
+            "name": "类型",
+            "order": 0
+        }],
+        "fatherId": "novel",
+        "id": "4",
+        "isleaf": 0,
+        "name": "出版",
+        "order": 0
+    }],
+    "code": "100",
+    "remark": "成功",
+    "time": 1523446099113
+}
+
+/*<div className="select-label">{item.desc}</div>
+          <div className="select-tags f-fl">
+
+
+           item.list.map((listItem,listIndex)=>{
+            let currentSpan=this.state[item["type"]];
+            return(
+             <span key={listItem.value} className={currentSpan===listItem.desc?"active":""}>{listItem.desc}</span>
+             )
+           })
+
+          </div>*/
