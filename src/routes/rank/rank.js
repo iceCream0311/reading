@@ -54,22 +54,26 @@ export default class Rank extends Component{
      this.setState({
       serial:dom.innerHTML,
       serialId:dom.getAttribute("data-id")
+     },()=>{
+       this.search()
      })
    }else if (dom.getAttribute("data-ga")==="字数") {
       this.setState({
       wordCount:dom.innerHTML,
       wordCountId:dom.getAttribute("data-id")
+     },()=>{
+       this.search()
      })
    }else{
     this.setState({
       category:dom.innerHTML,
       categoryId:dom.getAttribute("data-id")
+     },()=>{
+       this.search()
      })
    }
 
-   /*serial:"全部",
-    wordCount:"全部"
-    category:"全部"*/
+
  }
   changeColor=(e)=>{
    let dom=e.currentTarget;
@@ -87,20 +91,14 @@ export default class Rank extends Component{
    })
  }
  toggoleFn=(e)=>{
-  let dom=e.currentTarget;
   this.setState({
    show:!this.state.show
-  },()=>{
-   if (this.state.show) {
-      this.search()
-    }
   })
  }
 
 search=()=>{
   let categorys=this.state.serialId+","+this.state.wordCountId+","+this.state.categoryId;
   let categoryId=this.state.novel;
-
   axios.get(`${url}/category/novel/list`,{
      params:{
       categorys:categorys,
@@ -127,8 +125,8 @@ search=()=>{
      <span className={this.state.show?"icon-unfold":"icon-unfold show"} onClick={this.toggoleFn}></span>
      {this.state.show?
       (this.state.novel!=="4"?
-        <p>{this.state.serial}&nbsp;&nbsp;|&nbsp;&nbsp;{this.state.wordCount}&nbsp;&nbsp;|&nbsp;&nbsp;{this.state.category}</p>
-         :<p>{this.state.category}</p>)
+        <p onClick={this.toggoleFn}>{this.state.serial}&nbsp;&nbsp;|&nbsp;&nbsp;{this.state.wordCount}&nbsp;&nbsp;|&nbsp;&nbsp;{this.state.category}</p>
+         :<p onClick={this.toggoleFn}>{this.state.category}</p>)
       :
      <div className="mask-box">
        {
