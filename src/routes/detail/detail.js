@@ -9,6 +9,7 @@ export default class Detail extends Component {
  constructor(props){
      super(props);
     /* novelId:文章id chapterId:文章章节 openid:用户id loading:加载显示  chaptercount:章节总数 themFlag:风格设置是否展示*/
+   /* payData余额和支付信息*/
      this.state={
       novelId:1,
       chapterId:0,
@@ -20,7 +21,12 @@ export default class Detail extends Component {
       title:"",
       remind:"已经是第一章",
       remindFlag:true,
-      chaptercount:1
+      chaptercount:1,
+      isPay:0,
+      payData:{
+        payment:0,
+        userscore:0
+      }
    }
   }
    componentWillMount(){
@@ -61,12 +67,42 @@ export default class Detail extends Component {
      }
   })
    .then((res)=>{
+
     this.setState({
       title:res.data.body.title,
       content:res.data.body.content,
       chapterId:res.data.body.chapterId,
-      chaptercount:res.data.body.lastchapterId
+      chaptercount:res.data.body.lastchapterId,
+      isPay:res.data.body.isPay
     })
+    if (!res.data.body.isPay) {
+      let contentData=res.data.body.content;
+      let content =contentData.indexOf("</p>",2)
+      let content1 =contentData.indexOf("<p>")
+      content=contentData.substring(content1,content)
+       this.setState({
+        content:content
+      })
+        axios.get(`${url}/novel/chapter/pay/info`,{
+           params:{
+             novelId:novelId,
+             openId:openid,
+             chapterId:chapterId,
+           }
+        })
+        .then((res)=>{
+          console.log(res);
+          this.setState({
+             payData:{
+               payment:res.data.body.payment,
+               userscore:res.data.body.userscore
+             }
+          })
+        })
+        .catch((error)=>{
+         console.log(error)
+        })
+    }
    })
    .catch((error)=>{
     console.log(error)
@@ -76,7 +112,8 @@ export default class Detail extends Component {
  preFn=()=>{
   if (this.state.chapterId<=1) {
     this.setState({
-    remindFlag:false
+    remindFlag:false,
+    remind:"已经是第一张了"
     })
     setTimeout(
       () => {
@@ -96,30 +133,85 @@ export default class Detail extends Component {
   }
  }
  /* 下一章*/
- nextFn=()=>{
-
- if (this.state.chapterId===this.state.chaptercount) {
-    this.setState({
-    remindFlag:false,
-    remind:"已经是最后一张"
-    })
-    setTimeout(
-      () => {
+  nextFn=()=>{
+    if (this.state.chapterId===this.state.chaptercount) {
+       this.setState({
+       remindFlag:false,
+       remind:"已经是最后一张"
+       })
+       setTimeout(
+         () => {
+           this.setState({
+             remindFlag:true
+           })
+         },
+         2000
+       );
+     }else{
         this.setState({
-          remindFlag:true
-        })
-      },
-      2000
-    );
-  }else{
-     this.setState({
-      chapterId:(this.state.chapterId+1)
-    },()=>{
-      this.searchData()
-      this.node.scrollIntoView();
+         chapterId:(this.state.chapterId+1)
+       },()=>{
+         this.searchData()
+         this.node.scrollIntoView();
+       })
+     }
+  }
+  unlockFn=()=>{
+    let novelId=this.state.novelId;
+    let chapterId=this.state.chapterId;
+    let openid=this.state.openid;
+    axios.get(`${url}/novel/chapter/pay`,{
+       params:{
+         novelId:novelId,
+         openId:openid,
+         chapterId:chapterId,
+       }
+    })
+    .then((res)=>{
+     /* 1000：购买成功；1001：用户账户余额不足;2001:购买异常，请重试！*/
+      if(res.data.body.status===0){
+        if (res.data.body.code===1001) {
+          alert("账户余额不足,请充值")
+           this.props.history.push('/pay?openid='+openid)
+        }else if(res.data.body.code===1000) {
+           this.setState({
+             isPay:1,
+             remindFlag:false,
+             remind:"解锁成功"
+             })
+             setTimeout(
+               () => {
+                 this.setState({
+                   remindFlag:true
+                 })
+               },
+               2000
+            );
+          this.searchData()
+        }else{
+          alert("购买异常，请重试")
+        }
+      }else{
+        this.setState({
+           isPay:1,
+           remindFlag:false,
+           remind:"解锁成功"
+           })
+           setTimeout(
+             () => {
+               this.setState({
+                 remindFlag:true
+               })
+             },
+             2000
+          );
+        this.searchData()
+      }
+    })
+    .catch((error)=>{
+     console.log(error)
     })
   }
- }
  themChange=()=>{
   this.setState({
     themFlag:!this.state.themFlag
@@ -166,6 +258,22 @@ export default class Detail extends Component {
           <Link to={this.state.openid?`person?openid=${this.state.openid}`:"/person"}>个人中心</Link>
         </div>
       </div>
+     {!this.state.isPay&&
+      <div className="m-layer-container">
+          <div className="m-layer">
+            <div className="m-info">
+              <h3>支持作者创作，解锁后继续阅读</h3>
+              <p className="price">解锁本章：<em>{this.state.payData.payment}</em>阅读币</p>
+              <p><span className="balance">阅点余额：<em>{this.state.payData.userscore}</em>阅读币</span></p>
+            </div>
+            <div className="m-action">
+            <div className="m-btns">
+              <span className="btn-buy btn--light-active" onClick={this.unlockFn}>解 锁</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
       <div className="tj">
         <h3><em className="sep"></em>作者推荐</h3>
         <div className='content'>

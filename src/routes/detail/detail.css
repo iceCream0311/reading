@@ -141,11 +141,69 @@
  color: #24211f;
  background-color: #f0ebe4;
 }
+#detail.btn-theme-yellow p{
+ color: #24211f;
+}
 #detail.btn-theme-dark{
  color: #736e67;
  background-color: #302f2f;
 }
+#detail.btn-theme-dark p{
+ color: #736e67;
+}
 #detail.btn-theme-light{
  color: #24211f;
  background-color: #fff;
+}
+.m-layer-container{
+ position: fixed;
+ left:0;
+ top:0;
+ right:0;
+ bottom:0;
+ background-color: rgba(0,0,0,0.5)
+}
+.m-layer{
+ position: absolute;
+ bottom:0;
+ width: 100%;
+ background-color: #fff
+}
+.m-layer-container .m-info {
+ padding: .66667rem .33333rem 0;
+ line-height: 1;
+}
+.m-layer-container .m-info  h3{
+ text-align: center;
+ font-size: .42667rem;
+ height: .82667rem;
+ line-height: .82667rem;
+ color: #24211f;
+}
+.m-layer-container .m-action {
+ padding: .26667rem .4rem .53333rem;
+}
+#detail  .m-layer-container p{
+ text-indent: 0;
+ margin-bottom: .26667rem;
+ font-size: .37333rem;
+}
+#detail .m-layer-container p em {
+  color: #ed6460;
+}
+#detail .m-btns .btn-buy {
+  display: inline-block;
+  width: 9.2rem;
+  height: 1.06667rem;
+  line-height: 1.06667rem;
+  border-radius: 6px;
+  font-size: .42667rem;
+  text-align: center;
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid;
+  border-radius: .13333rem;
+  background-color: #ed6460;
+  color: #fff
 }
