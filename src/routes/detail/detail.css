@@ -169,6 +169,12 @@
  width: 100%;
  background-color: #fff
 }
+.m-layer-container{
+  display: none;
+}
+.m-layer-container.show{
+  display: block;
+}
 .m-layer-container .m-info {
  padding: .66667rem .33333rem 0;
  line-height: 1;

@@ -22,7 +22,7 @@ export default class Detail extends Component {
       remind:"已经是第一章",
       remindFlag:true,
       chaptercount:1,
-      isPay:0,
+      isPay:1,
       payData:{
         payment:0,
         userscore:0
@@ -74,35 +74,41 @@ export default class Detail extends Component {
       chapterId:res.data.body.chapterId,
       chaptercount:res.data.body.lastchapterId,
       isPay:res.data.body.isPay
-    })
-    if (!res.data.body.isPay) {
-      let contentData=res.data.body.content;
-      let content =contentData.indexOf("</p>",2)
-      let content1 =contentData.indexOf("<p>")
-      content=contentData.substring(content1,content)
-       this.setState({
-        content:content
-      })
-        axios.get(`${url}/novel/chapter/pay/info`,{
-           params:{
-             novelId:novelId,
-             openId:openid,
-             chapterId:chapterId,
-           }
+    },()=>{
+      if (!res.data.body.isPay) {
+        let contentData=res.data.body.content;
+        let content =contentData.indexOf("</p>",2)
+        let content1 =contentData.indexOf("<p>")
+        content=contentData.substring(content1,content)
+         this.setState({
+          content:content
         })
-        .then((res)=>{
-          console.log(res);
-          this.setState({
-             payData:{
-               payment:res.data.body.payment,
-               userscore:res.data.body.userscore
+          axios.get(`${url}/novel/chapter/pay/info`,{
+             params:{
+               novelId:novelId,
+               openId:openid,
+               chapterId:chapterId,
              }
           })
+          .then((res)=>{
+            console.log(res);
+            this.setState({
+               payData:{
+                 payment:res.data.body.payment,
+                 userscore:res.data.body.userscore
+               }
+            })
+          })
+          .catch((error)=>{
+           console.log(error)
+          })
+      }else{
+        this.setState({
+          content:res.data.body.content
         })
-        .catch((error)=>{
-         console.log(error)
-        })
-    }
+      }
+    })
+
    })
    .catch((error)=>{
     console.log(error)
@@ -258,8 +264,8 @@ export default class Detail extends Component {
           <Link to={this.state.openid?`person?openid=${this.state.openid}`:"/person"}>个人中心</Link>
         </div>
       </div>
-     {!this.state.isPay&&
-      <div className="m-layer-container">
+
+      <div className={!this.state.isPay?"m-layer-container show":"m-layer-container"}>
           <div className="m-layer">
             <div className="m-info">
               <h3>支持作者创作，解锁后继续阅读</h3>
@@ -273,7 +279,6 @@ export default class Detail extends Component {
           </div>
         </div>
       </div>
-      }
       <div className="tj">
         <h3><em className="sep"></em>作者推荐</h3>
         <div className='content'>
