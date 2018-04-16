@@ -108,7 +108,7 @@ scaleFn=()=>{
    </div>
    {!this.state.remindFlag&&<Remind remind={this.state.remind}/>}
     <div className="container">
-     <ul className="Recommend">
+    {/*<ul className="Recommend">
      {
       RecommendArr.map((item,index)=>{
        return(
@@ -126,7 +126,7 @@ scaleFn=()=>{
       )
       })
      }
-    </ul>
+    </ul>*/}
      <ul className="recommend-list">
      {
       this.state.recommendList.map((item,index)=>{
