@@ -119,7 +119,7 @@ categoryFn=(type)=>{
        <div className="left"><Link to={this.state.openid?`/rank?openid=${this.state.openid}`:"/rank"}>分类</Link></div>
        <div className="right"><Link to={this.state.openid?`/category?openid=${this.state.openid}`:"/category"}>排行</Link></div>
      </div>
-     <ul className="book-list">
+     {/*<ul className="book-list">
      {
       this.state.tjArr.map((item,index)=>{
        return(
@@ -136,7 +136,7 @@ categoryFn=(type)=>{
       })
      }
      </ul>
-     <div className="changebtn">换一换<img src={changebtn} alt="换一换"/></div>
+     <div className="changebtn">换一换<img src={changebtn} alt="换一换"/></div>*/}
     </div>
     <div className="cardTitle">
       <div className="title"><b className="sep"></b>排行</div>

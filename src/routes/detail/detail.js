@@ -279,7 +279,7 @@ export default class Detail extends Component {
           </div>
         </div>
       </div>
-      <div className="tj">
+      {/*<div className="tj">
         <h3><em className="sep"></em>作者推荐</h3>
         <div className='content'>
           <Link to="link">邻座的男乘客太坏，要帮忙解除我的“凶兆”</Link>
@@ -287,7 +287,7 @@ export default class Detail extends Component {
           <Link to="link">办公室的门还开着，她竟伸手紧紧握住我的小弟弟</Link>
           <Link to="link">做了她的24小时保镖，每天晚上偷看她在浴室里……</Link>
         </div>
-      </div>
+      </div>*/}
     </div>
   )
  }
