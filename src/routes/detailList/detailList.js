@@ -11,7 +11,8 @@ export default class DetailList extends Component {
   this.state={
    openid:"",
    novelId:"",
-   listData:[]
+   listData:[],
+   chapterCount:0
   }
  }
  componentWillMount(){
@@ -32,7 +33,8 @@ export default class DetailList extends Component {
   .then((res)=>{
    this.setState({
     listData:res.data.body.chapter,
-    current_chapter_id:res.data.body.current_chapter_id
+    current_chapter_id:res.data.body.current_chapter_id,
+    chapterCount:res.data.body.chapterCount
   })
   })
   .catch((error)=>{
@@ -46,7 +48,7 @@ render(){
    <GoHome />
    <div className="container">
     <div className="total">
-     <span>共1960章</span>
+     <span>共{this.state.chapterCount}章</span>
      <span className="order">倒序</span>
     </div>
     <div className="m-menu">

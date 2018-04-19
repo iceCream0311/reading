@@ -258,11 +258,11 @@ export default class Detail extends Component {
           <Link to={this.state.openid?`/pay?openid=${this.state.openid}`:"/pay"} className="acitve">充值</Link>
           <span onClick={this.preFn}>上一章</span>
           <Link to={this.state.openid?`/?openid=${this.state.openid}`:"/"}>首页</Link>
-          <Link to={this.state.openid?`/rank?openid=${this.state.openid}`:"/rank"}>更多都市生活</Link>
-          <Link to="/">打开自动购买</Link>
+         {/* <Link to={this.state.openid?`/rank?openid=${this.state.openid}`:"/rank"}>更多都市生活</Link>
+          <Link to="/">打开自动购买</Link>*/}
           <Link to={this.state.openid?`/detail_book?id=${this.state.novelId}&openid=${this.state.openid}`:`/detail_book?id=${this.state.novelId}`}>详情页面</Link>
-          <Link to={this.state.openid?`person?openid=${this.state.openid}`:"/person"}>个人中心</Link>
-        </div>
+        {/*  <Link to={this.state.openid?`person?openid=${this.state.openid}`:"/person"}>个人中心</Link>
+        */}</div>
       </div>
 
       <div className={!this.state.isPay?"m-layer-container show":"m-layer-container"}>

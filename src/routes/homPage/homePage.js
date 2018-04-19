@@ -178,7 +178,7 @@ categoryFn=(type)=>{
            <li key={index}>
             <Link  to={this.state.openid?`/detail?id=${item.id}&openid=${this.state.openid}`:"/detail"}>
               <span className="index">{index+4}.</span>
-              <span className="tag">{item.category}</span>
+              <span className="tag">{item.classCategoryName}</span>
               <span className="title">{item.name}</span>
               <span className="author f-fr">{item.author}</span>
             </Link>
@@ -192,9 +192,9 @@ categoryFn=(type)=>{
          this.state.manArr.slice(3,this.state.manArr.length-1).map((item,index)=>{
           return(
            <li key={index}>
-            <Link  to={item.id}>
+            <Link  to={this.state.openid?`/detail?id=${item.id}&openid=${this.state.openid}`:"/detail"}>
               <span className="index">{index+4}.</span>
-              <span className="tag">{item.category}</span>
+              <span className="tag">{item.classCategoryName}</span>
               <span className="title">{item.name}</span>
               <span className="author f-fr">{item.author}</span>
             </Link>

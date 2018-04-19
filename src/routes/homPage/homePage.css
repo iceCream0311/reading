@@ -97,12 +97,12 @@
  color: #24211f;
 }
 .book-list .author {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    line-height: 1.5;
-    overflow: hidden;
-    font-size: .32rem;
-    color: #8a8886;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+  overflow: hidden;
+  font-size: .32rem;
+  color: #8a8886;
 }
 .book-list .index {
     width: .48rem;
@@ -260,6 +260,7 @@
  font-size: .32rem;
  color: #666461;
  text-align: right;
+ vertical-align: middle;
 }
 .btn-more{
  display: inline-block;
